@@ -1,0 +1,56 @@
+<div class="draggable-fields__form">
+  <h2>Select Items</h2>
+  <div class="drag-items-list">
+
+    <div class="drag-input" cdkDrag>
+      <mat-card>
+        <mat-form-field appearance="fill">
+          <mat-label>Input label</mat-label>
+          <input matInput placeholder="Placeholder">
+        </mat-form-field>
+      </mat-card>
+    </div>
+
+    <div class="drag-textarea" cdkDrag>
+      <mat-card>
+        <mat-form-field appearance="fill">
+          <mat-label>Textarea label</mat-label>
+          <textarea matInput placeholder="Placeholder"></textarea>
+        </mat-form-field>
+      </mat-card>
+
+    </div>
+
+    <div class="drag-button " cdkDrag>
+      <mat-card>
+        <div class="item-button drag-item">
+          <label>Button Label</label>
+          <button mat-flat-button color="primary">Button text</button>
+        </div>
+      </mat-card>
+    </div>
+
+    <div class="drag-checkbox" cdkDrag>
+      <mat-card>
+        <div class="item-checkbox drag-item">
+          <label>Checkbox Label</label>
+          <mat-checkbox color="primary">Check me!</mat-checkbox>
+        </div>
+      </mat-card>
+    </div>
+
+    <div class="drag-select" cdkDrag>
+      <mat-card>
+        <div class="item-select drag-item">
+          <mat-label>Select label</mat-label>
+          <mat-select>
+            <mat-option value="1">Option 1</mat-option>
+            <mat-option value="2">Option 2</mat-option>
+            <mat-option value="3">Option 3</mat-option>
+          </mat-select>
+        </div>
+      </mat-card>
+    </div>
+
+  </div>
+</div>
