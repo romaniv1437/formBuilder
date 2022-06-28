@@ -7,8 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FormBuilderComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
 
+  }
   ngOnInit(): void {
   }
 
