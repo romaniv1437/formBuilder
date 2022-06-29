@@ -12,9 +12,7 @@ export class FormBuilderComponent implements OnInit {
   formFields: any
 
   constructor(private store: Store<Store>) {
-
   }
-
   drop(event: CdkDragDrop<string[]>) {
     this.store.dispatch(setDragObject({name: event.item.data, id: Date.now()}));
   }

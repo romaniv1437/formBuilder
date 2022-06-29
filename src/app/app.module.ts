@@ -19,13 +19,23 @@ import {MatCardModule} from "@angular/material/card";
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { ReactiveComponentModule } from '@ngrx/component';
+import { InputFieldComponent } from './form-draggable-fields/fields/input-field/input-field.component';
+import { TextareaFieldComponent } from './form-draggable-fields/fields/textarea-field/textarea-field.component';
+import { ButtonFieldComponent } from './form-draggable-fields/fields/button-field/button-field.component';
+import { CheckboxFieldComponent } from './form-draggable-fields/fields/checkbox-field/checkbox-field.component';
+import { SelectFieldComponent } from './form-draggable-fields/fields/select-field/select-field.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FormBuilderComponent,
     FormAccordionComponent,
-    FormDraggableFieldsComponent
+    FormDraggableFieldsComponent,
+    InputFieldComponent,
+    TextareaFieldComponent,
+    ButtonFieldComponent,
+    CheckboxFieldComponent,
+    SelectFieldComponent
   ],
   imports: [
     ReactiveComponentModule,
