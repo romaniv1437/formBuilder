@@ -1,7 +1,7 @@
 import {createFeatureSelector, createReducer, createSelector, on} from '@ngrx/store';
-import {inputAC, checkboxAC, buttonAC, selectAC, textareaAC} from "../actions/drag.actions";
+import {setDragObject} from "../actions/drag.actions";
 
-export const FORM_NODE = 'form'
+export const FORM_NODE = 'formBuilder'
 
 export interface dragState {
   activeField: {name: string, id: number},
@@ -9,46 +9,22 @@ export interface dragState {
 }
 
 export const initialState:dragState = {
-  activeField: {name: 'null', id: 0},
+  activeField: {name: '', id: NaN},
   form: []
 }
 export const dragReducer = createReducer(
   initialState,
-  on(inputAC, (state, {id}) => {
+  on(setDragObject, (state, {name, id}) => {
     return {
       ...state,
-      activeField: {name: 'input', id: id},
-    }
-  }),
-  on(textareaAC, (state, {id}) => {
-    return {
-      ...state,
-      activeField: {name: 'textarea', id: id},
-    }
-  }),
-  on(buttonAC, (state, {id}) => {
-    return {
-      ...state,
-      activeField: {name: 'button', id: id},
-    }
-  }),
-  on(checkboxAC, (state, {id}) => {
-    return {
-      ...state,
-      activeField: {name: 'checkbox', id: id},
-    }
-  }),
-  on(selectAC, (state, {id}) => {
-    return {
-      ...state,
-      activeField: {name: 'select', id: id},
+      activeField: {name: name, id: id},
     }
   })
 )
 
-export const selectActiveField = createFeatureSelector<dragState>(FORM_NODE)
+export const selectorActiveField = createFeatureSelector<dragState>(FORM_NODE)
 
-export const selectorActiveField = createSelector(
-  selectActiveField,
+export const selectActiveField = createSelector(
+  selectorActiveField,
   state => state.activeField.name
 )

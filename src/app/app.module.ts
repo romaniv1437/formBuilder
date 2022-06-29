@@ -18,6 +18,7 @@ import {MatSelectModule} from "@angular/material/select";
 import {MatCardModule} from "@angular/material/card";
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
+import { ReactiveComponentModule } from '@ngrx/component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { environment } from '../environments/environment';
     FormDraggableFieldsComponent
   ],
   imports: [
+    ReactiveComponentModule,
     BrowserModule,
     AppRoutingModule,
     DragDropModule,
@@ -38,7 +40,7 @@ import { environment } from '../environments/environment';
     MatInputModule,
     MatSelectModule,
     MatCardModule,
-    StoreModule.forRoot({'form': dragReducer}),
+    StoreModule.forRoot({'formBuilder': dragReducer}),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
   ],
   providers: [],
