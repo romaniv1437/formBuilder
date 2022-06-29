@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 
-
 @Component({
   selector: 'app-form-draggable-fields',
   templateUrl: './form-draggable-fields.component.html',
@@ -12,7 +11,6 @@ export class FormDraggableFieldsComponent implements OnInit {
   buttonData = 'button'
   checkboxData = 'checkbox'
   selectData = 'select'
-  constructor() { }
 
   ngOnInit(): void {
   }
