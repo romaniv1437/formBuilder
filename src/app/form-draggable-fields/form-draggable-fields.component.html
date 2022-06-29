@@ -1,9 +1,8 @@
 <div class="draggable-fields__form">
   <h2>Select Items</h2>
   <div class="drag-items-list">
-
-    <div class="drag-input" cdkDrag>
-      <mat-card>
+    <div class="drag-input" cdkDrag [cdkDragData]="inputData" cdkDragBoundary=".form-builder-field">
+      <mat-card style="padding: 10px; display: flex; justify-content: center;">
         <mat-form-field appearance="fill">
           <mat-label>Input label</mat-label>
           <input matInput placeholder="Placeholder">
@@ -11,8 +10,8 @@
       </mat-card>
     </div>
 
-    <div class="drag-textarea" cdkDrag>
-      <mat-card>
+    <div class="drag-textarea" cdkDrag [cdkDragData]="textareaData" cdkDragBoundary=".form-builder-field">
+      <mat-card style="padding: 10px; display: flex; justify-content: center;">
         <mat-form-field appearance="fill">
           <mat-label>Textarea label</mat-label>
           <textarea matInput placeholder="Placeholder"></textarea>
@@ -21,8 +20,8 @@
 
     </div>
 
-    <div class="drag-button " cdkDrag>
-      <mat-card>
+    <div class="drag-button " cdkDrag [cdkDragData]="buttonData" cdkDragBoundary=".form-builder-field">
+      <mat-card style="padding: 10px; display: flex; justify-content: center;">
         <div class="item-button drag-item">
           <label>Button Label</label>
           <button mat-flat-button color="primary">Button text</button>
@@ -30,8 +29,8 @@
       </mat-card>
     </div>
 
-    <div class="drag-checkbox" cdkDrag>
-      <mat-card>
+    <div class="drag-checkbox" cdkDrag [cdkDragData]="checkboxData" cdkDragBoundary=".form-builder-field">
+      <mat-card style="padding: 10px; display: flex; justify-content: center;">
         <div class="item-checkbox drag-item">
           <label>Checkbox Label</label>
           <mat-checkbox color="primary">Check me!</mat-checkbox>
@@ -39,14 +38,14 @@
       </mat-card>
     </div>
 
-    <div class="drag-select" cdkDrag>
-      <mat-card>
+    <div class="drag-select" cdkDrag [cdkDragData]="selectData" cdkDragBoundary=".form-builder-field">
+      <mat-card style="padding: 10px; display: flex; justify-content: center; ">
         <div class="item-select drag-item">
           <mat-label>Select label</mat-label>
           <mat-select>
-            <mat-option value="1">Option 1</mat-option>
-            <mat-option value="2">Option 2</mat-option>
-            <mat-option value="3">Option 3</mat-option>
+            <mat-option>Option 1</mat-option>
+            <mat-option>Option 2</mat-option>
+            <mat-option>Option 3</mat-option>
           </mat-select>
         </div>
       </mat-card>

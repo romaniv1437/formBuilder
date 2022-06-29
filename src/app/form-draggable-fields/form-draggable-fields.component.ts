@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {MatButtonModule} from '@angular/material/button';
+import {Component, OnInit} from '@angular/core';
+
 
 @Component({
   selector: 'app-form-draggable-fields',
@@ -7,8 +7,11 @@ import {MatButtonModule} from '@angular/material/button';
   styleUrls: ['./form-draggable-fields.component.scss']
 })
 export class FormDraggableFieldsComponent implements OnInit {
-  primary: any;
-
+  inputData =  'input'
+  textareaData = 'textarea'
+  buttonData = 'button'
+  checkboxData = 'checkbox'
+  selectData = 'select'
   constructor() { }
 
   ngOnInit(): void {

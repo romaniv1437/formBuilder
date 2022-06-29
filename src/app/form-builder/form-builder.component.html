@@ -1,4 +1,6 @@
-<div class="form-builder-field">
-
+<div class="form-builder-field" cdkDropList
+     [cdkDropListData]="formFields"
+     (cdkDropListDropped)="drop($event)" >
+  <app-form-draggable-fields></app-form-draggable-fields>
 </div>
 
