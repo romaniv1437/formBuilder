@@ -6,4 +6,10 @@
   -moz-box-shadow: 0px -4px 87px -6px rgba(102,102,102,0.5) inset;
   display: flex;
   justify-content: flex-end;
+  .form-result {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }

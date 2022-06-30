@@ -1,12 +1,12 @@
-<div cdkDrag [cdkDragData]="data" cdkDragBoundary=".form-builder-field">
+<div>
   <mat-card>
     <div class="drag-item">
       <label>{{label}}</label>
       <span>
         <input type="checkbox" id="check"
           [ngStyle]="{
-          'width': styles.width,
-          'height': styles.height}"
+          'width': '25px',
+          'height': '25px'}"
         />
         <label for="check"
           [ngStyle]="{

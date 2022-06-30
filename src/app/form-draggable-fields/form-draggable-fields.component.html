@@ -1,36 +1,28 @@
 <div class="draggable-fields__form">
   <h2>Select Items</h2>
   <div class="drag-items-list">
-    <app-input-field
-      [data]="data.input"
+    <app-input-field cdkDrag [cdkDragData]="data.input" cdkDragBoundary=".form-builder-field"
       [label]="'Input Label'"
       [placeholder]="'Placeholder'"
-      [styles]="{width: '200px', height: '40px', borderStyle: 'solid', fontSize: '16px', fontWeight: '500', color: 'black'}"
     ></app-input-field>
-    <app-textarea-field
-      [data]="data.textarea"
+    <app-textarea-field  cdkDrag [cdkDragData]="data.textarea" cdkDragBoundary=".form-builder-field"
       [label]="'Textarea label'"
       [placeholder]="'Placeholder'"
-      [styles]="{width: '200px', height: '40px', borderStyle: 'solid', fontSize: '16px', fontWeight: '500', color: 'black'}"
     ></app-textarea-field>
-    <app-button-field
-      [data]="data.button"
+    <app-button-field cdkDrag [cdkDragData]="data.button" cdkDragBoundary=".form-builder-field"
       [label]="'Button Label'"
       [text]="'Button text'"
-      [styles]="{width: '200px', height: '40px', borderStyle: 'solid', fontSize: '16px', fontWeight: '500', color: 'black'}"
     ></app-button-field>
-    <app-checkbox-field
-      [data]="data.checkbox"
+    <app-checkbox-field cdkDrag [cdkDragData]="data.checkbox" cdkDragBoundary=".form-builder-field"
       [label]="'Checkbox Label'"
       [text]="'Checkbox text'"
-      [styles]="{width: '20px', height: '20px', fontSize: '16px', fontWeight: '400', color: 'black'}"
     ></app-checkbox-field>
-    <app-select-field [data]="data.select" [label]="'Select Label'" [options]="[
+    <app-select-field cdkDrag [cdkDragData]="data.select" cdkDragBoundary=".form-builder-field"
+    [label]="'Select Label'" [options]="[
     {value: 'option1',text: 'option 1'},
     {value: 'option2',text: 'option 2'},
     {value: 'option3',text: 'option 3'},
     ]"
-    [styles]="{width: '200px', height: '30px', fontSize: '16px', fontWeight: '400', color: 'black'}"
     ></app-select-field>
   </div>
 </div>
