@@ -1,7 +1,11 @@
 <div class="form-accordion__form">
-
-    <div class="setFieldForm">
-      <h2>{{activeField$ | ngrxPush}}</h2>
-      <input type="text" placeholder="label">
-    </div>
+  <h2>Customize field</h2>
+  <div *ngIf="activeField$ | ngrxPush" class="setFieldForm">
+    <p (click)="onClicked()">current field is => {{activeField$ | ngrxPush}}</p>
+    <fieldset [formGroup]="addFieldForm" class="accordion-form-control">
+        <input formControlName="label" placeholder="label"/>
+        <input formControlName="placeholder" placeholder="placeholder"/>
+        <input formControlName="text" placeholder="text"/>
+    </fieldset>
+  </div>
 </div>

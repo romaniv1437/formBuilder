@@ -14,8 +14,8 @@ export class ButtonFieldComponent implements OnInit {
   @Input() text: string = '';
   stylesStore: Observable<IStyles>
   styles: IStyles = {}
-  constructor(private store$: Store<dragState>) {
-    this.stylesStore = this.store$.pipe(select(selectFieldStyle))
+  constructor(private store: Store<dragState>) {
+    this.stylesStore = this.store.pipe(select(selectFieldStyle))
     this.stylesStore.subscribe(val => this.styles = val).unsubscribe()
   }
 

@@ -5,11 +5,6 @@
   margin: 0;
   box-sizing: border-box;
 }
-body {
-  line-height: 1;
-  font-family: Poppins;
-  color: #666666;
-}
 
 [class*='__container'] {
   max-width: 1230px;
@@ -26,7 +21,7 @@ body {
 }
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; color: #fff; }
 .drag-item {
   width: 100%;
   gap: 8px 0;

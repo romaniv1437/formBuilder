@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {CdkDragDrop} from "@angular/cdk/drag-drop";
-import {setDragObject} from "../../store/actions/drag.actions";
+import {addFieldToForm, setDragObject} from "../../store/actions/drag.actions";
 import {Store} from "@ngrx/store";
 
 @Component({
@@ -14,6 +14,7 @@ export class FormBuilderComponent implements OnInit {
 
   constructor(private store: Store<Store>) {
   }
+
   drop(event: CdkDragDrop<string[]>) {
     this.store.dispatch(setDragObject({name: event.item.data, id: Date.now()}));
   }
