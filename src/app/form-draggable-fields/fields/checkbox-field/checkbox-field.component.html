@@ -2,7 +2,19 @@
   <mat-card>
     <div class="drag-item">
       <label>{{label}}</label>
-      <mat-checkbox [color]="color">{{text}}</mat-checkbox>
+      <span>
+        <input type="checkbox" id="check"
+          [ngStyle]="{
+          'width': styles.width,
+          'height': styles.height}"
+        />
+        <label for="check"
+          [ngStyle]="{
+            'color': styles.color,
+            'font-size': styles.fontSize,
+            'font-weight': styles.fontWeight}"
+        >{{text}}</label>
+      </span>
     </div>
   </mat-card>
 </div>

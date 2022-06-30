@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {IStyles} from "../../../../assets/models/IStyle";
 
 @Component({
   selector: 'app-checkbox-field',
@@ -9,12 +10,12 @@ export class CheckboxFieldComponent implements OnInit {
   @Input() data: string
   @Input() label: string
   @Input() text: string
-  @Input() color: string
+  @Input() styles: IStyles
   constructor() {
     this.data = ''
     this.label = ''
     this.text = ''
-    this.color = ''
+    this.styles = {}
   }
 
   ngOnInit(): void {

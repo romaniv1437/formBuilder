@@ -1,9 +1,16 @@
 <div cdkDrag [cdkDragData]="data" cdkDragBoundary=".form-builder-field">
   <mat-card>
-    <mat-form-field appearance="fill" [color]="color">
-      <mat-label>{{label}}</mat-label>
-      <input matInput [placeholder]="placeholder">
-    </mat-form-field>
+    <div class="drag-item">
+      <label>{{label}}</label>
+      <input [placeholder]="placeholder"
+             [ngStyle]="{
+             'width': styles.width,
+             'height': styles.height,
+             'border-style': styles.borderStyle,
+             'font-size': styles.fontSize,
+             'font-weight': styles.fontWeight,
+             'color': styles.color}"/>
+    </div>
   </mat-card>
 </div>
 

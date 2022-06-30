@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import {IStyles} from "../../../../assets/models/IStyle";
 
 @Component({
   selector: 'app-input-field',
@@ -10,15 +11,13 @@ export class InputFieldComponent implements OnInit {
   @Input() data: string
   @Input() placeholder: string
   @Input() label: string
-  @Input() color: string
+  @Input() styles: IStyles
   constructor() {
     this.data = ''
     this.placeholder = ''
     this.label = ''
-    this.color = ''
+    this.styles = {}
   }
-
-
   ngOnInit(): void {
   }
 

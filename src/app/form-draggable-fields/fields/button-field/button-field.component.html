@@ -2,7 +2,15 @@
   <mat-card>
     <div class="drag-item">
       <label>{{label}}</label>
-      <button mat-flat-button color="primary">{{text}}</button>
+      <button
+        [ngStyle]="{
+             'width': styles.width,
+             'height': styles.height,
+             'border-style': styles.borderStyle,
+             'font-size': styles.fontSize,
+             'font-weight': styles.fontWeight,
+             'color': styles.color}"
+      >{{text}}</button>
     </div>
   </mat-card>
 </div>

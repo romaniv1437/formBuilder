@@ -1,8 +1,17 @@
 <div cdkDrag [cdkDragData]="data" cdkDragBoundary=".form-builder-field">
   <mat-card>
-    <mat-form-field appearance="fill">
-      <mat-label>{{label}}</mat-label>
-      <textarea matInput [placeholder]="placeholder"></textarea>
-    </mat-form-field>
+    <div class="drag-item">
+      <label>{{label}}</label>
+      <textarea
+        [placeholder]="placeholder"
+        [ngStyle]="{
+             'width': styles.width,
+             'height': styles.height,
+             'border-style': styles.borderStyle,
+             'font-size': styles.fontSize,
+             'font-weight': styles.fontWeight,
+             'color': styles.color}"
+      ></textarea>
+    </div>
   </mat-card>
 </div>
