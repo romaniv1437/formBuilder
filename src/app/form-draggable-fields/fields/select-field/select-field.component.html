@@ -1,14 +1,14 @@
 <div>
   <mat-card style="padding: 10px; display: flex; justify-content: center; ">
     <div class="drag-item">
-      <label>{{label}}</label>
+      <label>{{field?.options?.label}}</label>
       <select
         [ngStyle]="{
-          'width': styles.width,
-          'height': styles.height,
-          'font-size': styles.fontSize,
-          'font-weight': styles.fontWeight,
-          'color': styles.color
+          'width': field?.options?.styles?.width,
+          'height': field?.options?.styles?.height,
+          'font-size': field?.options?.styles?.fontSize,
+          'font-weight': field?.options?.styles?.fontWeight,
+          'color': field?.options?.styles?.color
         }"
       >
         <ng-container *ngFor="let option of options">

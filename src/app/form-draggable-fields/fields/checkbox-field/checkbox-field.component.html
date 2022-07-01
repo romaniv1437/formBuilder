@@ -1,7 +1,7 @@
 <div>
   <mat-card>
     <div class="drag-item">
-      <label>{{label}}</label>
+      <label>{{field?.options?.label}}</label>
       <span>
         <input type="checkbox" id="check"
           [ngStyle]="{
@@ -10,10 +10,10 @@
         />
         <label for="check"
           [ngStyle]="{
-            'color': styles.color,
-            'font-size': styles.fontSize,
-            'font-weight': styles.fontWeight}"
-        >{{text}}</label>
+            'color': field?.options?.styles?.color,
+            'font-size': field?.options?.styles?.fontSize,
+            'font-weight': field?.options?.styles?.fontWeight}"
+        >{{field?.options?.text}}</label>
       </span>
     </div>
   </mat-card>

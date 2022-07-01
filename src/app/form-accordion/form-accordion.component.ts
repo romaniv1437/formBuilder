@@ -1,8 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {Observable} from "rxjs";
 import {select, Store} from "@ngrx/store";
 import {dragState, selectActiveField} from "../../store/reducers/drag.reducer";
-import {addFieldToForm} from "../../store/actions/drag.actions";
+import {addFieldToForm, setActiveFieldValues} from "../../store/actions/drag.actions";
 import {FormControl, FormGroup} from "@angular/forms";
 
 @Component({
@@ -21,14 +21,19 @@ export class FormAccordionComponent {
       placeholder: new FormControl(),
       text: new FormControl()
     });
-    this.addFieldForm.valueChanges.subscribe(value => console.log(value))
+    this.addFieldForm.valueChanges.subscribe(value => console.log(value.label))
   }
 
-  onAddField(label: string, placeholder?: string, text?: string) {
-    this.store.dispatch(addFieldToForm({label, text, placeholder}));
+  onAddField(label:string, placeholder:string, text:string) {
+    this.store.dispatch(setActiveFieldValues({styles: {}, label: label, placeholder: placeholder, text: text}))
+    this.store.dispatch(addFieldToForm());
   }
+
   onClicked() {
-    this.onAddField('text', 'info', 'how')
+    let label = this.addFieldForm.value.label
+    let placeholder = this.addFieldForm.value.placeholder
+    let text = this.addFieldForm.value.text
+    this.onAddField(label, placeholder, text)
   }
 
 }

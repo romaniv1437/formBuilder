@@ -2,23 +2,20 @@
   <h2>Select Items</h2>
   <div class="drag-items-list">
     <app-input-field cdkDrag [cdkDragData]="data.input" cdkDragBoundary=".form-builder-field"
-      [label]="'Input Label'"
-      [placeholder]="'Placeholder'"
+                     [field]="field$|async"
     ></app-input-field>
     <app-textarea-field  cdkDrag [cdkDragData]="data.textarea" cdkDragBoundary=".form-builder-field"
-      [label]="'Textarea label'"
-      [placeholder]="'Placeholder'"
+                         [field]="field$|async"
     ></app-textarea-field>
     <app-button-field cdkDrag [cdkDragData]="data.button" cdkDragBoundary=".form-builder-field"
-      [label]="'Button Label'"
-      [text]="'Button text'"
+                      [field]="field$|async"
     ></app-button-field>
     <app-checkbox-field cdkDrag [cdkDragData]="data.checkbox" cdkDragBoundary=".form-builder-field"
-      [label]="'Checkbox Label'"
-      [text]="'Checkbox text'"
+                        [field]="field$|async"
     ></app-checkbox-field>
     <app-select-field cdkDrag [cdkDragData]="data.select" cdkDragBoundary=".form-builder-field"
-    [label]="'Select Label'" [options]="[
+                      [field]="field$|async"
+                      [options]="[
     {value: 'option1',text: 'option 1'},
     {value: 'option2',text: 'option 2'},
     {value: 'option3',text: 'option 3'},

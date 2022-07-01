@@ -1,16 +1,15 @@
-<div>
-  <mat-card>
+<mat-card>
     <div class="drag-item">
-      <label>{{label}}</label>
-      <input [placeholder]="placeholder"
+      <label>{{field?.options?.label}}</label>
+      <input [placeholder]=field?.options?.placeholder
              [ngStyle]="{
-             'width': styles.width,
-             'height': styles.height,
-             'border-style': styles.borderStyle,
-             'font-size': styles.fontSize,
-             'font-weight': styles.fontWeight,
-             'color': styles.color}"/>
+             'width': field?.options?.styles?.width,
+             'height': field?.options?.styles?.height,
+             'border-style': field?.options?.styles?.borderStyle,
+             'font-size': field?.options?.styles?.fontSize,
+             'font-weight': field?.options?.styles?.fontWeight,
+             'color': field?.options?.styles?.color}"/>
     </div>
-  </mat-card>
-</div>
+</mat-card>
+
 

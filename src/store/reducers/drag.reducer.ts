@@ -1,20 +1,23 @@
 import {createFeatureSelector, createReducer, createSelector, on} from '@ngrx/store';
-import {addFieldToForm, setDragObject} from "../actions/drag.actions";
-import {IStyles} from "../../assets/models/IStyle";
+import {addFieldToForm, setActiveFieldValues, setDragObject} from "../actions/drag.actions";
+import {IActiveField} from 'src/assets/models/IActiveField';
 
 export const FORM_NODE = 'formBuilder'
 
 export interface dragState {
-  activeField: {name: string, id: number, styles: IStyles},
-  form: Array<{field?: {name?: string, id?: number, styles?: IStyles}, label?: string, placeholder?: string, text?: string}>
+  activeField: IActiveField
+  form: Array<{field?: IActiveField}>
 }
-
 export const initialState:dragState = {
   activeField: {
     name: '',
-    id: NaN,
-    styles: {width: '200px', height: '40px', borderStyle: 'solid', fontSize: '16px', fontWeight: '500', color: 'black'},
-
+    id: 0,
+    options: {
+      styles: {width: '200px', height: '40px', borderStyle: 'solid', fontSize: '16px', fontWeight: '500', color: 'black'},
+      placeholder: 'placeholder',
+      label: 'field label',
+      text: 'field text'
+      }
     },
   form: []
 }
@@ -23,14 +26,24 @@ export const dragReducer = createReducer(
   on(setDragObject, (state, {name, id}) => {
     return {
       ...state,
-      activeField: {name: name, id: id, styles: state.activeField.styles},
+      activeField: {name: name, id: id, options: {styles: state.activeField.options.styles, placeholder: 'placeholder', text: 'field text', label: 'field label'}},
     }
   }),
-  on(addFieldToForm, (state, {label, placeholder, text}) => {
+  on(addFieldToForm, (state) => {
     return {
       ...state,
-      form: [...state.form, {field: state.activeField, label: label, placeholder: placeholder, text: text}],
-      activeField: {name: '', id: 0, styles: {}}
+      form: [...state.form, {field: state.activeField}],
+      activeField: initialState.activeField
+    }
+  }),
+  on(setActiveFieldValues, (state, {styles, placeholder, text, label}) => {
+    return {
+      ...state,
+      activeField: {
+        name: state.activeField.name,
+        id: state.activeField.id,
+        options: {styles, placeholder, text, label}
+      }
     }
   })
 )
@@ -41,7 +54,7 @@ export const selectActiveField = createSelector(
   selectorActiveField,
   state => state.activeField.name
 )
-export const selectFieldStyle = createSelector(
+export const selectDefaultField = createSelector(
   selectorActiveField,
-  state => state.activeField.styles
+  state => state.activeField
 )

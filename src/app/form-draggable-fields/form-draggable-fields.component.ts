@@ -1,5 +1,9 @@
 import {Component} from '@angular/core';
 import {dragData} from "../../assets/data/dragData";
+import {Observable} from "rxjs";
+import {IActiveField} from "../../assets/models/IActiveField";
+import {select, Store} from "@ngrx/store";
+import {dragState, selectDefaultField} from "../../store/reducers/drag.reducer";
 
 @Component({
   selector: 'app-form-draggable-fields',
@@ -7,5 +11,9 @@ import {dragData} from "../../assets/data/dragData";
   styleUrls: ['./form-draggable-fields.component.scss']
 })
 export class FormDraggableFieldsComponent {
-  data = dragData
+  field$: Observable<IActiveField> | null;
+  data = dragData;
+  constructor(private store: Store<dragState>) {
+    this.field$ = this.store.pipe(select(selectDefaultField))
+  }
 }
