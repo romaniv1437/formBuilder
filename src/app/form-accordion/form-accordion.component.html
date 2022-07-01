@@ -1,11 +1,51 @@
 <div class="form-accordion__form">
   <h2>Customize field</h2>
   <div *ngIf="activeField$ | ngrxPush" class="setFieldForm">
-    <p (click)="onClicked()">current field is => {{activeField$ | ngrxPush}}</p>
+    <p>current field is => {{activeField$ | ngrxPush}}</p>
     <fieldset [formGroup]="addFieldForm" class="accordion-form-control">
-        <input formControlName="label" placeholder="label"/>
-        <input formControlName="placeholder" placeholder="placeholder"/>
-        <input formControlName="text" placeholder="text"/>
+      <div>
+        <label for="label">Field label</label>
+        <input formControlName="label" placeholder="label" id="label"/>
+      </div>
+      <div>
+        <label for="placeholder">Field placeholder</label>
+        <input formControlName="placeholder" placeholder="placeholder" id="placeholder"/>
+      </div>
+      <div>
+        <label for="text">Field text</label>
+        <input formControlName="text" placeholder="text" id="text"/>
+      </div>
+      <div>
+        <label for="width">Field width</label>
+        <input formControlName="width" placeholder="width" id="width" type="number"/>
+      </div>
+      <div>
+        <label for="height">Field height</label>
+        <input formControlName="height" placeholder="height" id="height" type="number"/>
+      </div>
+      <div>
+        <label for="fontSize">Field font size</label>
+        <input formControlName="fontSize" placeholder="font size" id="fontSize" type="number"/>
+      </div>
+
+      <div>
+        <label for="fontWeight">Field font weight</label>
+        <input formControlName="fontWeight" placeholder="font weight" id="fontWeight" type="number"/>
+      </div>
+      <div>
+        <label for="borderStyle">Field border style</label>
+        <select formControlName="borderStyle" name="borderStyle" id="borderStyle">
+          <ng-container *ngFor="let option of borderStyles | keyvalue">
+            <option style="font-size: 18px" [value]="option.key">{{option.value}}</option>
+          </ng-container>
+        </select>
+      </div>
+      <div>
+        <label for="color">Field color</label>
+        <input formControlName="color" id="color" placeholder="color" [(colorPicker)]="addFieldForm.value.color"
+               [style.background]="addFieldForm.value.color"/>
+      </div>
     </fieldset>
+    <button (click)="onAddFieldClicked()">submit</button>
   </div>
 </div>

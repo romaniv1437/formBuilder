@@ -5,17 +5,33 @@
     color: #fff;
     font-size: 30px;
   }
+  button {
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    margin-top: 10px;
+    width: 100%;
+    min-height: 30px;
+    background-color: #826ef1;
+  }
   .setFieldForm {
     width: 100%;
     .accordion-form-control {
+      div {
+        display: flex;
+        flex-direction: column;
+      }
       border: none;
-      gap: 15px 0;
+      gap: 10px 0;
       max-width: 250px;
       width: 100%;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      input {
+      select {
+        cursor: pointer;
+      }
+      input, select {
         padding-left: 5px;
         max-width: 300px;
         width: 100%;

@@ -24,6 +24,7 @@ import { TextareaFieldComponent } from './form-draggable-fields/fields/textarea-
 import { ButtonFieldComponent } from './form-draggable-fields/fields/button-field/button-field.component';
 import { CheckboxFieldComponent } from './form-draggable-fields/fields/checkbox-field/checkbox-field.component';
 import { SelectFieldComponent } from './form-draggable-fields/fields/select-field/select-field.component';
+import { ColorPickerModule } from 'ngx-color-picker';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { SelectFieldComponent } from './form-draggable-fields/fields/select-fiel
     MatSelectModule,
     MatCardModule,
     StoreModule.forRoot({'formBuilder': dragReducer}),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+    ColorPickerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
