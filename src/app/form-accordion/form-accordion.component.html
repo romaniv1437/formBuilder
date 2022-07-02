@@ -6,6 +6,9 @@
       <div>
         <label for="label">Field label</label>
         <input formControlName="label" placeholder="label" id="label"/>
+        <div *ngIf="field['label'].touched && field['label'].invalid" style="color: red;">
+          That field its required
+        </div>
       </div>
       <div>
         <label for="placeholder">Field placeholder</label>
@@ -27,7 +30,6 @@
         <label for="fontSize">Field font size</label>
         <input formControlName="fontSize" placeholder="font size" id="fontSize" type="number"/>
       </div>
-
       <div>
         <label for="fontWeight">Field font weight</label>
         <input formControlName="fontWeight" placeholder="font weight" id="fontWeight" type="number"/>

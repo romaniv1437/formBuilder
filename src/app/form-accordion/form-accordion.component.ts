@@ -3,7 +3,7 @@ import {Observable} from "rxjs";
 import {select, Store} from "@ngrx/store";
 import {dragState, selectActiveField} from "../../store/reducers/drag.reducer";
 import {addFieldToForm, setActiveFieldValues} from "../../store/actions/drag.actions";
-import {FormControl, FormGroup} from "@angular/forms";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {borderStylesData} from "../../assets/data/borderStylesData";
 import {IStyles} from "../../assets/models/IStyle";
 
@@ -21,7 +21,7 @@ export class FormAccordionComponent {
   constructor(private store: Store<dragState>) {
     this.activeField$ = this.store.pipe(select(selectActiveField))
     this.addFieldForm = new FormGroup({
-      label: new FormControl(),
+      label: new FormControl('', Validators.required),
       placeholder: new FormControl(),
       text: new FormControl(),
       color: new FormControl(),
@@ -31,6 +31,9 @@ export class FormAccordionComponent {
       borderStyle: new FormControl(),
       fontWeight: new FormControl(),
     });
+  }
+  get field(){
+    return this.addFieldForm.controls;
   }
 
   addField(label: string, placeholder: string, text: string, styles: IStyles) {
