@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {select, Store} from "@ngrx/store";
-import {dragState, selectForm} from "../../store/reducers/drag.reducer";
+import {dragState, selectForm} from "../../../../store/reducers/drag.reducer";
 import {Observable} from "rxjs";
-import {IActiveField} from "../../assets/models/IActiveField";
+import {IActiveField} from "../../../../assets/models/IActiveField";
 
 @Component({
   selector: 'app-form-creator',

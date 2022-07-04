@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {CdkDragDrop} from "@angular/cdk/drag-drop";
-import {addFieldToForm, setDragObject} from "../../store/actions/drag.actions";
+import {addFieldToForm, setDragObject} from "../../../../store/actions/drag.actions";
 import {Store} from "@ngrx/store";
 
 @Component({

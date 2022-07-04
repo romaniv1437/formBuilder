@@ -4,9 +4,9 @@ import {StoreModule} from '@ngrx/store';
 import {dragReducer} from '../store/reducers/drag.reducer';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {FormBuilderComponent} from './form-builder/form-builder.component';
-import {FormAccordionComponent} from './form-accordion/form-accordion.component';
-import {FormDraggableFieldsComponent} from './form-draggable-fields/form-draggable-fields.component';
+import {FormBuilderComponent} from './components/builder/form-builder/form-builder.component';
+import {FormAccordionComponent} from './components/builder/form-accordion/form-accordion.component';
+import {FormDraggableFieldsComponent} from './components/builder/form-draggable-fields/form-draggable-fields.component';
 import {DragDropModule} from "@angular/cdk/drag-drop";
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
@@ -14,15 +14,17 @@ import {MatCardModule} from "@angular/material/card";
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {environment} from '../environments/environment';
 import {ReactiveComponentModule} from '@ngrx/component';
-import {InputFieldComponent} from './form-draggable-fields/fields/input-field/input-field.component';
-import {TextareaFieldComponent} from './form-draggable-fields/fields/textarea-field/textarea-field.component';
-import {ButtonFieldComponent} from './form-draggable-fields/fields/button-field/button-field.component';
-import {CheckboxFieldComponent} from './form-draggable-fields/fields/checkbox-field/checkbox-field.component';
-import {SelectFieldComponent} from './form-draggable-fields/fields/select-field/select-field.component';
+import {InputFieldComponent} from './components/builder/form-draggable-fields/fields/input-field/input-field.component';
+import {TextareaFieldComponent} from './components/builder/form-draggable-fields/fields/textarea-field/textarea-field.component';
+import {ButtonFieldComponent} from './components/builder/form-draggable-fields/fields/button-field/button-field.component';
+import {CheckboxFieldComponent} from './components/builder/form-draggable-fields/fields/checkbox-field/checkbox-field.component';
+import {SelectFieldComponent} from './components/builder/form-draggable-fields/fields/select-field/select-field.component';
 import {ColorPickerModule} from 'ngx-color-picker';
-import { FormCreatorComponent } from './form-creator/form-creator.component';
+import {FormCreatorComponent} from './components/builder/form-creator/form-creator.component';
 import {NgxdModule} from "@ngxd/core";
-import { FormDynamicComponent } from './form-creator/form-dynamic/form-dynamic.component';
+import {FormDynamicComponent} from './components/builder/form-creator/form-dynamic/form-dynamic.component';
+import { BuilderComponent } from './components/builder/builder.component';
+import { LoginComponent } from './components/auth/login/login.component';
 
 @NgModule({
   declarations: [
@@ -36,23 +38,26 @@ import { FormDynamicComponent } from './form-creator/form-dynamic/form-dynamic.c
     CheckboxFieldComponent,
     SelectFieldComponent,
     FormCreatorComponent,
-    FormDynamicComponent
+    FormDynamicComponent,
+    BuilderComponent,
+    LoginComponent
   ],
-    imports: [
-        ReactiveComponentModule,
-        BrowserModule,
-        AppRoutingModule,
-        DragDropModule,
-        BrowserAnimationsModule,
-        FormsModule,
-        ReactiveFormsModule,
-        MatCardModule,
-        StoreModule.forRoot({'formBuilder': dragReducer}),
-        StoreDevtoolsModule.instrument({maxAge: 25, logOnly: environment.production}),
-        ColorPickerModule,
-        NgxdModule
-    ],
+  imports: [
+    ReactiveComponentModule,
+    BrowserModule,
+    AppRoutingModule,
+    DragDropModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatCardModule,
+    StoreModule.forRoot({'formBuilder': dragReducer}),
+    StoreDevtoolsModule.instrument({maxAge: 25, logOnly: environment.production}),
+    ColorPickerModule,
+    NgxdModule,
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

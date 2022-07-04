@@ -1,11 +1,11 @@
 import {Component} from '@angular/core';
 import {Observable} from "rxjs";
 import {select, Store} from "@ngrx/store";
-import {dragState, selectActiveField} from "../../store/reducers/drag.reducer";
-import {addFieldToForm, setActiveFieldValues} from "../../store/actions/drag.actions";
+import {dragState, selectActiveField} from "../../../../store/reducers/drag.reducer";
+import {addFieldToForm, setActiveFieldValues} from "../../../../store/actions/drag.actions";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {borderStylesData} from "../../assets/data/borderStylesData";
-import {IStyles} from "../../assets/models/IStyle";
+import {borderStylesData} from "../../../../assets/data/borderStylesData";
+import {IStyles} from "../../../../assets/models/IStyle";
 
 @Component({
   selector: 'app-form-accordion',
