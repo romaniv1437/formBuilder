@@ -20,6 +20,9 @@ import {ButtonFieldComponent} from './form-draggable-fields/fields/button-field/
 import {CheckboxFieldComponent} from './form-draggable-fields/fields/checkbox-field/checkbox-field.component';
 import {SelectFieldComponent} from './form-draggable-fields/fields/select-field/select-field.component';
 import {ColorPickerModule} from 'ngx-color-picker';
+import { FormCreatorComponent } from './form-creator/form-creator.component';
+import {NgxdModule} from "@ngxd/core";
+import { FormDynamicComponent } from './form-creator/form-dynamic/form-dynamic.component';
 
 @NgModule({
   declarations: [
@@ -31,21 +34,24 @@ import {ColorPickerModule} from 'ngx-color-picker';
     TextareaFieldComponent,
     ButtonFieldComponent,
     CheckboxFieldComponent,
-    SelectFieldComponent
+    SelectFieldComponent,
+    FormCreatorComponent,
+    FormDynamicComponent
   ],
-  imports: [
-    ReactiveComponentModule,
-    BrowserModule,
-    AppRoutingModule,
-    DragDropModule,
-    BrowserAnimationsModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MatCardModule,
-    StoreModule.forRoot({'formBuilder': dragReducer}),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
-    ColorPickerModule
-  ],
+    imports: [
+        ReactiveComponentModule,
+        BrowserModule,
+        AppRoutingModule,
+        DragDropModule,
+        BrowserAnimationsModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MatCardModule,
+        StoreModule.forRoot({'formBuilder': dragReducer}),
+        StoreDevtoolsModule.instrument({maxAge: 25, logOnly: environment.production}),
+        ColorPickerModule,
+        NgxdModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

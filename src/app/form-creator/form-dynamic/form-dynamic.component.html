@@ -1,0 +1,9 @@
+<div [ngSwitch]="field?.name">
+  <app-input-field *ngSwitchCase="field_name.input" [field]="field"></app-input-field>
+  <app-textarea-field *ngSwitchCase="field_name.textarea" [field]="field"></app-textarea-field>
+  <app-button-field *ngSwitchCase="field_name.button" [field]="field"></app-button-field>
+  <app-checkbox-field *ngSwitchCase="field_name.checkbox" [field]="field"></app-checkbox-field>
+  <app-select-field *ngSwitchCase="field_name.select" [field]="field"></app-select-field>
+</div>
+
+

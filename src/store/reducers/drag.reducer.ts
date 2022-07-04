@@ -48,13 +48,17 @@ export const dragReducer = createReducer(
   })
 )
 
-export const selectorActiveField = createFeatureSelector<dragState>(FORM_NODE)
+export const selectorDragState = createFeatureSelector<dragState>(FORM_NODE)
 
 export const selectActiveField = createSelector(
-  selectorActiveField,
+  selectorDragState,
   state => state.activeField.name
 )
 export const selectDefaultField = createSelector(
-  selectorActiveField,
+  selectorDragState,
   state => state.activeField
+)
+export const selectForm = createSelector(
+  selectorDragState,
+  state => state.form
 )

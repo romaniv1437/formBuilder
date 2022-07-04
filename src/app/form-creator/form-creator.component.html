@@ -1,0 +1,7 @@
+<div class="form-result">
+    <ng-container *ngFor="let field of form$ | async">
+      <div>
+        <app-form-dynamic [field]="field.field"></app-form-dynamic>
+      </div>
+    </ng-container>
+</div>

@@ -6,10 +6,11 @@
   -moz-box-shadow: 0px -4px 87px -6px rgba(102,102,102,0.5) inset;
   display: flex;
   justify-content: flex-end;
-  .form-result {
+  .form-builder-result {
+    margin-top: 150px;
     width: 100%;
     display: flex;
-    align-items: center;
     justify-content: center;
+    padding-bottom: 200px;
   }
 }
