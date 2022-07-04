@@ -25,11 +25,13 @@ import {NgxdModule} from "@ngxd/core";
 import {FormDynamicComponent} from './components/builder/form-creator/form-dynamic/form-dynamic.component';
 import { BuilderComponent } from './components/builder/builder.component';
 import { LoginComponent } from './components/auth/login/login.component';
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {MatInputModule} from "@angular/material/input";
 import {MatButtonModule} from "@angular/material/button";
 import { RegisterComponent } from './components/auth/register/register.component';
 import {MatTabsModule} from "@angular/material/tabs";
+import { HomeComponent } from './components/home/home.component';
+import {TokenInterceptor} from "./interceptors/token.interceptor";
 
 @NgModule({
   declarations: [
@@ -46,7 +48,8 @@ import {MatTabsModule} from "@angular/material/tabs";
     FormDynamicComponent,
     BuilderComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    HomeComponent
   ],
   imports: [
     ReactiveComponentModule,
@@ -66,7 +69,13 @@ import {MatTabsModule} from "@angular/material/tabs";
     MatButtonModule,
     MatTabsModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      multi: true,
+      useClass: TokenInterceptor
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -1,5 +1,5 @@
 export enum dragData {
-  input = 'app-input-field',
+  input = 'input',
   textarea = 'textarea',
   button = 'button',
   checkbox = 'checkbox',

@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     }
   }
   toRegisterPage() {
-      return this.router.navigate(['/register']).then(r => console.log(r))
+      return this.router.navigate(['/register'])
   }
   onSubmit() {
     this.loginForm.disable()

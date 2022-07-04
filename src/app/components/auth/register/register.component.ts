@@ -28,7 +28,9 @@ export class RegisterComponent implements OnInit, OnDestroy {
       this.controlSub.unsubscribe()
     }
   }
-
+  toLoginPage() {
+    return this.router.navigate(['/login'])
+  }
   onSubmit() {
     this.registerForm.disable()
     this.controlSub = this.auth.registerUser(this.registerForm.value).subscribe(
