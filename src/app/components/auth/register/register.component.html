@@ -1,7 +1,7 @@
-<div class="login-form">
-  <h2>Login</h2>
+<div class="register-form">
+  <h2>Registration</h2>
   <mat-card style="max-width: 400px;">
-    <form [formGroup]="loginForm"
+    <form [formGroup]="registerForm"
           (ngSubmit)="onSubmit()"
           style="border: none">
       <mat-form-field>
@@ -14,15 +14,7 @@
         <input matInput formControlName="password" placeholder="Enter Password" id="password" type="password"/>
       </mat-form-field>
       <br>
-      <button mat-raised-button color="primary" style="width: 100%" [disabled]="loginForm.invalid || loginForm.disabled">Submit</button>
+      <button mat-raised-button color="primary" style="width: 100%" [disabled]="registerForm.invalid || registerForm.disabled">Submit</button>
     </form>
-    <span>
-      <p (click)="toRegisterPage()">Do not have account?
-        <span style="cursor: pointer; color: #4a24c7; text-decoration: underline">Register</span>
-      </p>
-
-    </span>
   </mat-card>
 </div>
-
-

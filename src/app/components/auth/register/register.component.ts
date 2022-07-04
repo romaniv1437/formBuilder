@@ -5,17 +5,17 @@ import {Subscription} from "rxjs";
 import {ActivatedRoute, Params, Router} from "@angular/router";
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.scss']
 })
-export class LoginComponent implements OnInit, OnDestroy {
+export class RegisterComponent implements OnInit, OnDestroy {
 
-  loginForm: FormGroup;
+  registerForm: FormGroup;
   controlSub: Subscription | undefined;
 
   constructor(private auth: AuthService, private router: Router, private route: ActivatedRoute) {
-    this.loginForm = new FormGroup( {
+    this.registerForm = new FormGroup( {
       email: new FormControl(null, [Validators.required, Validators.email]),
       password: new FormControl(null, [Validators.required])
     })
@@ -35,18 +35,16 @@ export class LoginComponent implements OnInit, OnDestroy {
       this.controlSub.unsubscribe()
     }
   }
-  toRegisterPage() {
-      return this.router.navigate(['/register']).then(r => console.log(r))
-  }
+
   onSubmit() {
-    this.loginForm.disable()
-    this.controlSub = this.auth.loginUser(this.loginForm.value).subscribe(
+    this.registerForm.disable()
+    this.controlSub = this.auth.registerUser(this.registerForm.value).subscribe(
       () => {
-        this.router.navigate(['/create-form']).then(r => console.log(r))
-        this.loginForm.reset()
+        this.router.navigate(['/login']).then(r => console.log(r))
+        this.registerForm.reset()
       },
       () => {
-        this.loginForm.enable()
+        this.registerForm.enable()
       }
     )
 

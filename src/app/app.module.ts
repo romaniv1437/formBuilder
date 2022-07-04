@@ -25,6 +25,11 @@ import {NgxdModule} from "@ngxd/core";
 import {FormDynamicComponent} from './components/builder/form-creator/form-dynamic/form-dynamic.component';
 import { BuilderComponent } from './components/builder/builder.component';
 import { LoginComponent } from './components/auth/login/login.component';
+import {HttpClientModule} from "@angular/common/http";
+import {MatInputModule} from "@angular/material/input";
+import {MatButtonModule} from "@angular/material/button";
+import { RegisterComponent } from './components/auth/register/register.component';
+import {MatTabsModule} from "@angular/material/tabs";
 
 @NgModule({
   declarations: [
@@ -40,7 +45,8 @@ import { LoginComponent } from './components/auth/login/login.component';
     FormCreatorComponent,
     FormDynamicComponent,
     BuilderComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     ReactiveComponentModule,
@@ -55,6 +61,10 @@ import { LoginComponent } from './components/auth/login/login.component';
     StoreDevtoolsModule.instrument({maxAge: 25, logOnly: environment.production}),
     ColorPickerModule,
     NgxdModule,
+    HttpClientModule,
+    MatInputModule,
+    MatButtonModule,
+    MatTabsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
