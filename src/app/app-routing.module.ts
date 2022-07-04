@@ -3,9 +3,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { BuilderComponent } from './components/builder/builder.component'
 import {LoginComponent} from "./components/auth/login/login.component";
 import {RegisterComponent} from "./components/auth/register/register.component";
+import {AuthGuard} from "./guards/auth-guard.guard";
 
 const routes: Routes = [
-  { path: 'create-form', component: BuilderComponent },
+  { path: 'create-form', component: BuilderComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
 ];

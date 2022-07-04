@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.loginForm.disable()
     this.controlSub = this.auth.loginUser(this.loginForm.value).subscribe(
       () => {
-        this.router.navigate(['/create-form']).then(r => console.log(r))
+        this.router.navigate(['/create-form'])
         this.loginForm.reset()
       },
       () => {
