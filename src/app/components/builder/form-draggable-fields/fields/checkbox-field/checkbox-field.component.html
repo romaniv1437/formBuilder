@@ -4,12 +4,13 @@
       <label>{{field?.options?.label}}</label>
       <span>
         <input type="checkbox" id="check"
-          [ngStyle]="{
+               [formControl]="formField?.get(field?.options?.label)"
+               [ngStyle]="{
           'width': '25px',
           'height': '25px'}"
         />
         <label for="check"
-          [ngStyle]="{
+               [ngStyle]="{
             'color': field?.options?.styles?.color,
             'font-size': field?.options?.styles?.fontSize,
             'font-weight': field?.options?.styles?.fontWeight}"

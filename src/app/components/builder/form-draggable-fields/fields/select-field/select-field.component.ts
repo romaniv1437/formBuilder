@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {IActiveField} from "../../../../../../assets/models/IActiveField";
+import {FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-select-field',
@@ -7,7 +8,8 @@ import {IActiveField} from "../../../../../../assets/models/IActiveField";
   styleUrls: ['./select-field.component.scss']
 })
 export class SelectFieldComponent implements OnInit {
-  @Input() field: IActiveField | null | undefined
+  @Input() field: IActiveField | null | undefined;
+  @Input() formField: FormGroup | any;
   @Input() options: Array<{value: string, text: string}> = [];
 
   ngOnInit(): void {

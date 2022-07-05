@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {IActiveField} from "../../../../../../assets/models/IActiveField";
+import {FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-checkbox-field',
@@ -7,7 +8,8 @@ import {IActiveField} from "../../../../../../assets/models/IActiveField";
   styleUrls: ['./checkbox-field.component.scss']
 })
 export class CheckboxFieldComponent implements OnInit {
-  @Input() field: IActiveField | null | undefined
+  @Input() field: IActiveField | null | undefined;
+  @Input() formField: FormGroup | any;
 
   ngOnInit(): void {
   }

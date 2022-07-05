@@ -3,6 +3,7 @@
     <div class="drag-item">
       <label>{{field?.options?.label}}</label>
       <select
+        [formControl]="formField?.get(field?.options?.label)"
         [ngStyle]="{
           'width': field?.options?.styles?.width,
           'height': field?.options?.styles?.height,

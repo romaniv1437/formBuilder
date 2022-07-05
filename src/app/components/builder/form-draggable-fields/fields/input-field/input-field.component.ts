@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {IActiveField} from "../../../../../../assets/models/IActiveField";
+import {FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-input-field',
@@ -9,9 +10,8 @@ import {IActiveField} from "../../../../../../assets/models/IActiveField";
 
 export class InputFieldComponent implements OnInit {
   @Input() field: IActiveField | null | undefined
-  constructor() {
+  @Input() formField: FormGroup | any;
 
-  }
   ngOnInit(): void {
   }
 }
