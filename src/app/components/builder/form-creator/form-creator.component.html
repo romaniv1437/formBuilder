@@ -1,9 +1,18 @@
+<div *ngIf="isEdit$|ngrxPush">
+  <h2>EDITED NOW</h2>
+</div>
+
 <form [formGroup]="form_result" class="form-result" (ngSubmit)="onSubmit()">
   <h2>{{form_result.get('form_label')?.value}}</h2>
   <div class="form">
     <ng-container *ngFor="let field of form$ | async">
       <div>
-        <app-form-dynamic [field]="field.field" [form_result]="form_result" [onRemoveField]="onRemoveField"></app-form-dynamic>
+        <app-form-dynamic [field]="field.field"
+                          [form_result]="form_result"
+                          [onRemoveField]="onRemoveField"
+                          [onSetEditMode]="onSetEditMode"
+                          [isEdit]="isEdit$|ngrxPush"
+        ></app-form-dynamic>
       </div>
     </ng-container>
   </div>

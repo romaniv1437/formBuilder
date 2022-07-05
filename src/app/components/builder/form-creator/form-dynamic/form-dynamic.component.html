@@ -1,23 +1,50 @@
 <div [ngSwitch]="field?.name">
-  <app-input-field *ngSwitchCase="field_name.input" (click)="onRemoveField(field?.id, field?.options?.label)"
-                   [field]="field"
-                   [formField]="form_result"></app-input-field>
-  <app-textarea-field *ngSwitchCase="field_name.textarea" (click)="onRemoveField(field?.id, field?.options?.label)"
-                      [field]="field"
-                      [formField]="form_result"></app-textarea-field>
-  <app-button-field *ngSwitchCase="field_name.button" (click)="onRemoveField(field?.id, field?.options?.label)"
-                    [field]="field" ></app-button-field>
-  <app-checkbox-field *ngSwitchCase="field_name.checkbox" (click)="onRemoveField(field?.id, field?.options?.label)"
-                      [field]="field"
-                      [formField]="form_result"></app-checkbox-field>
-  <app-select-field *ngSwitchCase="field_name.select" (click)="onRemoveField(field?.id, field?.options?.label)"
-                    [field]="field"
-                    [formField]="form_result"
-                    [options]="[
+
+  <div *ngSwitchCase="field_name.input" style="position: relative">
+    <div class="icons">
+      <mat-icon (click)="onRemoveField(field?.id, field?.options?.label)">delete</mat-icon>
+      <mat-icon (click)="onSetEditMode(field?.id)">edit</mat-icon>
+    </div>
+    <app-input-field [field]="field" [formField]="form_result"></app-input-field>
+  </div>
+
+  <div *ngSwitchCase="field_name.textarea" style="position: relative">
+    <div class="icons">
+      <mat-icon (click)="onRemoveField(field?.id, field?.options?.label)">delete</mat-icon>
+      <mat-icon (click)="onSetEditMode(field?.id)">edit</mat-icon>
+    </div>
+    <app-textarea-field [field]="field" [formField]="form_result"></app-textarea-field>
+  </div>
+
+  <div *ngSwitchCase="field_name.button" style="position: relative">
+    <div class="icons">
+      <mat-icon (click)="onRemoveField(field?.id, field?.options?.label)">delete</mat-icon>
+      <mat-icon (click)="onSetEditMode(field?.id)">edit</mat-icon>
+    </div>
+    <app-button-field [field]="field" ></app-button-field>
+  </div>
+
+  <div *ngSwitchCase="field_name.checkbox" style="position: relative">
+    <div class="icons">
+      <mat-icon (click)="onRemoveField(field?.id, field?.options?.label)">delete</mat-icon>
+      <mat-icon (click)="onSetEditMode(field?.id)">edit</mat-icon>
+    </div>
+    <app-checkbox-field [field]="field" [formField]="form_result"></app-checkbox-field>
+  </div>
+
+  <div *ngSwitchCase="field_name.select" style="position: relative">
+    <div class="icons">
+      <mat-icon (click)="onRemoveField(field?.id, field?.options?.label)">delete</mat-icon>
+      <mat-icon (click)="onSetEditMode(field?.id)">edit</mat-icon>
+    </div>
+    <app-select-field [field]="field" [formField]="form_result"
+                      [options]="[
     {value: 'option1',text: 'option 1'},
     {value: 'option2',text: 'option 2'},
     {value: 'option3',text: 'option 3'},
     ]"
-  ></app-select-field>
+    ></app-select-field>
+  </div>
+
 </div>
 

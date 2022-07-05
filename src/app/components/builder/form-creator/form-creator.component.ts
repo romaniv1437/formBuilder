@@ -1,10 +1,10 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {select, Store} from "@ngrx/store";
-import {dragState, selectForm} from "../../../../store/reducers/drag.reducer";
+import {dragState, isEdit, selectForm} from "../../../../store/reducers/drag.reducer";
 import {Observable, Subscription} from "rxjs";
-import {IActiveField} from "../../../../assets/models/IActiveField";
+import {IActiveField, IActiveFieldOptions} from "../../../../assets/models/IActiveField";
 import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
-import {removeField} from "../../../../store/actions/drag.actions";
+import {editField, removeField, setEditMode} from "../../../../store/actions/drag.actions";
 
 @Component({
   selector: 'app-form-creator',
@@ -13,20 +13,16 @@ import {removeField} from "../../../../store/actions/drag.actions";
 })
 export class FormCreatorComponent implements OnInit, OnDestroy {
   form$: Observable<Array<{field?: IActiveField}>>
+  isEdit$: Observable<boolean>;
   form_result: FormGroup;
   controlSub: Subscription | undefined;
+
   constructor(private store: Store<dragState>, private fb: FormBuilder) {
     this.form$ = store.pipe(select(selectForm))
+    this.isEdit$ = store.pipe(select(isEdit))
     this.form_result = new FormGroup({
       form_label: new FormControl('My form')
     })
-  }
-  onSubmit() {
-    window.alert(JSON.stringify(this.form_result.value))
-  }
-  onRemoveField(id: number, controlName: string) {
-    this.store.dispatch(removeField({id: id}))
-    this.form_result.removeControl(controlName)
   }
   ngOnInit(): void {
     this.controlSub = this.form$.subscribe(value => {
@@ -38,5 +34,19 @@ export class FormCreatorComponent implements OnInit, OnDestroy {
   }
   ngOnDestroy() {
     this.controlSub?.unsubscribe()
+  }
+
+  onSubmit() {
+    window.alert(JSON.stringify(this.form_result.value))
+  }
+  onRemoveField(id: number, controlName: string) {
+    this.store.dispatch(removeField({id: id}))
+    this.form_result.removeControl(controlName)
+  }
+  onEditField(id:number, name: string, options: IActiveFieldOptions) {
+    this.store.dispatch(editField({id, name, options}))
+  }
+  onSetEditMode(id:number) {
+    this.store.dispatch(setEditMode({id}))
   }
 }

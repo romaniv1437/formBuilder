@@ -6,7 +6,7 @@
       <div>
         <label for="label">Field label</label>
         <input formControlName="label" placeholder="label" id="label"/>
-        <div *ngIf="field['label'].touched && field['label'].invalid" style="color: red;">
+        <div *ngIf="field['label'].invalid" style="color: red;">
           That field its required
         </div>
       </div>
@@ -48,6 +48,6 @@
                [style.background]="addFieldForm.value.color"/>
       </div>
     </fieldset>
-    <button (click)="onAddFieldClicked()">submit</button>
+    <button (click)="onAddFieldClicked()" [disabled]="addFieldForm.invalid" style="cursor: pointer">submit</button>
   </div>
 </div>

@@ -32,6 +32,7 @@ import { RegisterComponent } from './components/auth/register/register.component
 import {MatTabsModule} from "@angular/material/tabs";
 import { HomeComponent } from './components/home/home.component';
 import {TokenInterceptor} from "./interceptors/token.interceptor";
+import {MatIconModule} from "@angular/material/icon";
 
 @NgModule({
   declarations: [
@@ -51,24 +52,25 @@ import {TokenInterceptor} from "./interceptors/token.interceptor";
     RegisterComponent,
     HomeComponent
   ],
-  imports: [
-    ReactiveComponentModule,
-    BrowserModule,
-    AppRoutingModule,
-    DragDropModule,
-    BrowserAnimationsModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MatCardModule,
-    StoreModule.forRoot({'formBuilder': dragReducer}),
-    StoreDevtoolsModule.instrument({maxAge: 25, logOnly: environment.production}),
-    ColorPickerModule,
-    NgxdModule,
-    HttpClientModule,
-    MatInputModule,
-    MatButtonModule,
-    MatTabsModule
-  ],
+    imports: [
+        ReactiveComponentModule,
+        BrowserModule,
+        AppRoutingModule,
+        DragDropModule,
+        BrowserAnimationsModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MatCardModule,
+        StoreModule.forRoot({'formBuilder': dragReducer}),
+        StoreDevtoolsModule.instrument({maxAge: 25, logOnly: environment.production}),
+        ColorPickerModule,
+        NgxdModule,
+        HttpClientModule,
+        MatInputModule,
+        MatButtonModule,
+        MatTabsModule,
+        MatIconModule
+    ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,

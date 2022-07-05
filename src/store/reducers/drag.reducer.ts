@@ -1,14 +1,23 @@
 import {createFeatureSelector, createReducer, createSelector, on} from '@ngrx/store';
-import {addFieldToForm, removeField, setActiveFieldValues, setDragObject} from "../actions/drag.actions";
+import {
+  addFieldToForm,
+  editField,
+  removeField,
+  setActiveFieldValues,
+  setDragObject,
+  setEditMode
+} from "../actions/drag.actions";
 import {IActiveField} from 'src/assets/models/IActiveField';
 
 export const FORM_NODE = 'formBuilder'
 
 export interface dragState {
+  isEdit: {id: number, editMode: boolean}
   activeField: IActiveField
   form: Array<{field?: IActiveField}>
 }
 export const initialState:dragState = {
+  isEdit: {id: 0, editMode: false},
   activeField: {
     name: '',
     id: 0,
@@ -51,7 +60,24 @@ export const dragReducer = createReducer(
       ...state,
       form: state.form.filter(field => id !== field.field?.id)
     }
+  }),
+  on(editField, (state, {id, name, options}) => {
+    return  {
+      ...state,
+      form: state.form.map(field => {
+        if (field.field?.id === id) {
+          return {...field, field: {id: id, name: name, options: options}}
+        } return field
+      })
+    }
+  }),
+  on(setEditMode, (state, {id}) => {
+    return {
+      ...state,
+      isEdit: {id, editMode: !state.isEdit.editMode}
+    }
   })
+
 )
 
 export const selectorDragState = createFeatureSelector<dragState>(FORM_NODE)
@@ -67,4 +93,8 @@ export const selectDefaultField = createSelector(
 export const selectForm = createSelector(
   selectorDragState,
   state => state.form
+)
+export const isEdit = createSelector(
+  selectorDragState,
+  state => state.isEdit.editMode
 )
