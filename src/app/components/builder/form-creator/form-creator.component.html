@@ -3,7 +3,7 @@
   <div class="form">
     <ng-container *ngFor="let field of form$ | async">
       <div>
-        <app-form-dynamic [field]="field.field" [form_result]="form_result"></app-form-dynamic>
+        <app-form-dynamic [field]="field.field" [form_result]="form_result" [onRemoveField]="onRemoveField"></app-form-dynamic>
       </div>
     </ng-container>
   </div>

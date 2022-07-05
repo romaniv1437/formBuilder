@@ -4,6 +4,7 @@ import {dragState, selectForm} from "../../../../store/reducers/drag.reducer";
 import {Observable} from "rxjs";
 import {IActiveField} from "../../../../assets/models/IActiveField";
 import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
+import {removeField} from "../../../../store/actions/drag.actions";
 
 @Component({
   selector: 'app-form-creator',
@@ -22,7 +23,9 @@ export class FormCreatorComponent implements OnInit {
   onSubmit() {
     window.alert(JSON.stringify(this.form_result.value))
   }
-  ngOnChanges() {
+  onRemoveField(id: number, controlName: string) {
+    this.store.dispatch(removeField({id: id}))
+    this.form_result.removeControl(controlName)
   }
   ngOnInit(): void {
     this.form$.subscribe(value => {
@@ -31,7 +34,5 @@ export class FormCreatorComponent implements OnInit {
         this.form_result.addControl(value[value.length-1]?.field?.options?.label, this.fb.control(''))
       }
     })
-
   }
-
 }

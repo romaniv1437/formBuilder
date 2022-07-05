@@ -1,5 +1,5 @@
 import {createFeatureSelector, createReducer, createSelector, on} from '@ngrx/store';
-import {addFieldToForm, setActiveFieldValues, setDragObject} from "../actions/drag.actions";
+import {addFieldToForm, removeField, setActiveFieldValues, setDragObject} from "../actions/drag.actions";
 import {IActiveField} from 'src/assets/models/IActiveField';
 
 export const FORM_NODE = 'formBuilder'
@@ -44,6 +44,12 @@ export const dragReducer = createReducer(
         id: state.activeField.id,
         options: {styles, placeholder, text, label}
       }
+    }
+  }),
+  on(removeField, (state, {id}) => {
+    return {
+      ...state,
+      form: state.form.filter(field => id !== field.field?.id)
     }
   })
 )

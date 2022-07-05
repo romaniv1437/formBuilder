@@ -1,16 +1,16 @@
 <div [ngSwitch]="field?.name">
-  <app-input-field *ngSwitchCase="field_name.input"
+  <app-input-field *ngSwitchCase="field_name.input" (click)="onRemoveField(field?.id, field?.options?.label)"
                    [field]="field"
                    [formField]="form_result"></app-input-field>
-  <app-textarea-field *ngSwitchCase="field_name.textarea"
+  <app-textarea-field *ngSwitchCase="field_name.textarea" (click)="onRemoveField(field?.id, field?.options?.label)"
                       [field]="field"
                       [formField]="form_result"></app-textarea-field>
-  <app-button-field *ngSwitchCase="field_name.button"
+  <app-button-field *ngSwitchCase="field_name.button" (click)="onRemoveField(field?.id, field?.options?.label)"
                     [field]="field" ></app-button-field>
-  <app-checkbox-field *ngSwitchCase="field_name.checkbox"
+  <app-checkbox-field *ngSwitchCase="field_name.checkbox" (click)="onRemoveField(field?.id, field?.options?.label)"
                       [field]="field"
                       [formField]="form_result"></app-checkbox-field>
-  <app-select-field *ngSwitchCase="field_name.select"
+  <app-select-field *ngSwitchCase="field_name.select" (click)="onRemoveField(field?.id, field?.options?.label)"
                     [field]="field"
                     [formField]="form_result"
                     [options]="[

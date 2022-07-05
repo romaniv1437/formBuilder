@@ -11,6 +11,7 @@ import {FormGroup} from "@angular/forms";
 export class FormDynamicComponent implements OnInit {
   @Input() field: IActiveField | undefined
   @Input() form_result: FormGroup | any;
+  @Input() onRemoveField: any
   field_name = dragData;
 
   ngOnInit(): void {
