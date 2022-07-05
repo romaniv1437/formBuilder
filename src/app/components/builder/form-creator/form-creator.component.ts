@@ -1,7 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {select, Store} from "@ngrx/store";
 import {dragState, selectForm} from "../../../../store/reducers/drag.reducer";
-import {Observable} from "rxjs";
+import {Observable, Subscription} from "rxjs";
 import {IActiveField} from "../../../../assets/models/IActiveField";
 import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {removeField} from "../../../../store/actions/drag.actions";
@@ -11,9 +11,10 @@ import {removeField} from "../../../../store/actions/drag.actions";
   templateUrl: './form-creator.component.html',
   styleUrls: ['./form-creator.component.scss']
 })
-export class FormCreatorComponent implements OnInit {
+export class FormCreatorComponent implements OnInit, OnDestroy {
   form$: Observable<Array<{field?: IActiveField}>>
   form_result: FormGroup;
+  controlSub: Subscription | undefined;
   constructor(private store: Store<dragState>, private fb: FormBuilder) {
     this.form$ = store.pipe(select(selectForm))
     this.form_result = new FormGroup({
@@ -28,11 +29,14 @@ export class FormCreatorComponent implements OnInit {
     this.form_result.removeControl(controlName)
   }
   ngOnInit(): void {
-    this.form$.subscribe(value => {
+    this.controlSub = this.form$.subscribe(value => {
       if (value[value.length-1]?.field?.options?.label !== undefined) {
         // @ts-ignore
         this.form_result.addControl(value[value.length-1]?.field?.options?.label, this.fb.control(''))
       }
     })
+  }
+  ngOnDestroy() {
+    this.controlSub?.unsubscribe()
   }
 }
