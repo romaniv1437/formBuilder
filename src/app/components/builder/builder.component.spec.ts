@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { BuilderComponent } from './builder.component';
+import { ReactiveComponentModule } from '@ngrx/component';
+import {StoreModule} from "@ngrx/store";
+import {dragReducer} from "../../../store/reducers/drag.reducer";
 
 describe('BuilderComponent', () => {
   let component: BuilderComponent;
@@ -8,7 +11,11 @@ describe('BuilderComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BuilderComponent ]
+      declarations: [ BuilderComponent ],
+      imports: [
+        StoreModule.forRoot({'formBuilder': dragReducer}),
+        ReactiveComponentModule
+      ]
     })
     .compileComponents();
 

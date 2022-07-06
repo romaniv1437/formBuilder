@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SelectFieldComponent } from './select-field.component';
+import {StoreModule} from "@ngrx/store";
+import {dragReducer} from "../../../../../../store/reducers/drag.reducer";
 
 describe('SelectFieldComponent', () => {
   let component: SelectFieldComponent;
@@ -8,7 +10,10 @@ describe('SelectFieldComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SelectFieldComponent ]
+      declarations: [ SelectFieldComponent ],
+      imports: [
+        StoreModule.forRoot({'formBuilder': dragReducer}),
+      ]
     })
     .compileComponents();
 

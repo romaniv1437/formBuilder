@@ -1,6 +1,10 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { FormCreatorComponent } from './form-creator.component';
+import {FormCreatorComponent} from './form-creator.component';
+import {StoreModule} from "@ngrx/store";
+import {dragReducer} from "../../../../store/reducers/drag.reducer";
+import {ReactiveComponentModule} from "@ngrx/component";
+import {ReactiveFormsModule} from "@angular/forms";
 
 describe('FormCreatorComponent', () => {
   let component: FormCreatorComponent;
@@ -8,7 +12,12 @@ describe('FormCreatorComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FormCreatorComponent ]
+      declarations: [ FormCreatorComponent],
+      imports: [
+        ReactiveFormsModule,
+        StoreModule.forRoot({'formBuilder': dragReducer}),
+        ReactiveComponentModule
+      ]
     })
     .compileComponents();
 

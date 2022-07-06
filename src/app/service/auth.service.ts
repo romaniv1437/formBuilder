@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
+import {Injectable} from '@angular/core';
+import {HttpClient} from "@angular/common/http";
 import {tap} from "rxjs/operators";
 import {IUser} from "../../assets/models/IUser";
 
@@ -8,9 +8,10 @@ import {IUser} from "../../assets/models/IUser";
 })
 export class AuthService {
 
-  private token: string = '';
+  token: string = '';
   private _registerURL = 'http://localhost:5000/api/auth/register';
   private _loginURL = 'http://localhost:5000/api/auth/login';
+
 
   constructor(private http: HttpClient) { }
 

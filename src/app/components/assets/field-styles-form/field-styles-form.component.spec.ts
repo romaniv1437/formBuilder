@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FieldStylesFormComponent } from './field-styles-form.component';
+import {StoreModule} from "@ngrx/store";
+import {dragReducer} from "../../../../store/reducers/drag.reducer";
+import {ReactiveComponentModule} from "@ngrx/component";
 
 describe('FieldStylesFormComponent', () => {
   let component: FieldStylesFormComponent;
@@ -8,7 +11,11 @@ describe('FieldStylesFormComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FieldStylesFormComponent ]
+      declarations: [ FieldStylesFormComponent ],
+      imports: [
+        StoreModule.forRoot({'formBuilder': dragReducer}),
+        ReactiveComponentModule
+      ]
     })
     .compileComponents();
 
