@@ -1,3 +1,4 @@
+
 <form [formGroup]="form_result" class="form-result" (ngSubmit)="onSubmit()">
   <h2>{{form_result.get('form_label')?.value}}</h2>
   <div class="form">
@@ -9,10 +10,11 @@
                           [onSetEditMode]="onSetEditMode"
         ></app-form-dynamic>
       </div>
+
     </ng-container>
   </div>
 
   <div class="submit">
-    <button type="submit" mat-raised-button color="primary">Send</button>
+    <button type="submit" [disabled]="form_result.invalid" mat-raised-button color="primary">Send</button>
   </div>
 </form>

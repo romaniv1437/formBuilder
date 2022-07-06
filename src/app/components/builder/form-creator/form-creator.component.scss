@@ -1,4 +1,5 @@
 .form-result {
+  color: #fff;
   min-width: 300px;
   min-height: 300px;
   width: 100%;
@@ -7,7 +8,8 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
-  background-color: gray;
+  background-color: #acabab;
+  border-radius: 5px;
   .form {
     flex: 1 1 auto;
     gap: 15px 0;

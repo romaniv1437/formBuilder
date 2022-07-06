@@ -22,13 +22,13 @@ export class FormCreatorComponent implements OnInit, OnDestroy {
       form_label: new FormControl('My form')
     })
   }
+
   ngOnInit(): void {
-    this.controlSub = this.form$.subscribe(value => {
-      if (value[value.length-1]?.field?.options?.label !== undefined) {
-        // @ts-ignore
-        this.form_result.addControl(value[value.length-1]?.field?.options?.label, this.fb.control(''))
-      }
-    })
+    this.controlSub = this.form$.subscribe(
+      value => value.map(
+        field => this.form_result.addControl(<string>field.field?.options.label, this.fb.control(''))
+      )
+    )
   }
   ngOnDestroy() {
     this.controlSub?.unsubscribe()
@@ -37,6 +37,7 @@ export class FormCreatorComponent implements OnInit, OnDestroy {
   onSubmit() {
     window.alert(JSON.stringify(this.form_result.value))
   }
+
   onRemoveField(id:number, controlName:string) {
     this.store.dispatch(removeField({id: id}))
     this.form_result.removeControl(controlName)

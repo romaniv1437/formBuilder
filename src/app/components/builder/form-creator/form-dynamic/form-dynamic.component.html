@@ -5,7 +5,7 @@
       <mat-icon (click)="onRemoveField(field?.id, field?.options?.label)">delete</mat-icon>
       <mat-icon (click)="onSetEditMode(field?.id, field?.name, field?.options?.label)">edit</mat-icon>
     </div>
-    <app-input-field [field]="field" [formField]="form_result"></app-input-field>
+    <app-input-field [field]="field" [formField]="form_result" ></app-input-field>
   </div>
 
   <div *ngSwitchCase="field_name.textarea" style="position: relative">
