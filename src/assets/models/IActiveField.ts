@@ -9,5 +9,6 @@ export interface IActiveFieldOptions {
   styles: IStyles,
   label: string,
   placeholder?: string,
-  text?: string
+  text?: string,
+  required: boolean
 }

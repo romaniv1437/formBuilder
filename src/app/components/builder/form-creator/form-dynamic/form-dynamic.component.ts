@@ -11,7 +11,6 @@ import {Store} from "@ngrx/store";
 })
 export class FormDynamicComponent implements OnInit {
   @Input() field: IActiveField | undefined
-  @Input() isEdit: any;
   @Input() form_result: FormGroup | any;
   @Input() onRemoveField: any
   @Input() onSetEditMode: any

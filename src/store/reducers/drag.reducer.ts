@@ -12,12 +12,12 @@ import {IActiveField} from 'src/assets/models/IActiveField';
 export const FORM_NODE = 'formBuilder'
 
 export interface dragState {
-  isEdit: {id: number, editMode: boolean}
+  isEdit: {id: number, name: string, editMode: boolean}
   activeField: IActiveField
   form: Array<{field?: IActiveField}>
 }
 export const initialState:dragState = {
-  isEdit: {id: 0, editMode: false},
+  isEdit: {id: 0, name: '', editMode: false},
   activeField: {
     name: '',
     id: 0,
@@ -25,7 +25,8 @@ export const initialState:dragState = {
       styles: {width: '200px', height: '40px', borderStyle: 'solid', fontSize: '16px', fontWeight: '500', color: 'black'},
       placeholder: 'placeholder',
       label: 'field label',
-      text: 'field text'
+      text: 'field text',
+      required: false
       }
     },
   form: []
@@ -35,46 +36,51 @@ export const dragReducer = createReducer(
   on(setDragObject, (state, {name, id}) => {
     return {
       ...state,
-      activeField: {name: name, id: id, options: {styles: state.activeField.options.styles, placeholder: 'placeholder', text: 'field text', label: 'field label'}},
+      isEdit: {id: 0, name: '', editMode: false},
+      activeField: {name: name, id: id, options: {styles: state.activeField.options.styles, placeholder: 'placeholder', text: 'field text', label: 'field label', required: false}},
     }
   }),
   on(addFieldToForm, (state) => {
     return {
       ...state,
+      isEdit: {id: 0, name: '', editMode: false},
       form: [...state.form, {field: state.activeField}],
       activeField: initialState.activeField
     }
   }),
-  on(setActiveFieldValues, (state, {styles, placeholder, text, label}) => {
+  on(setActiveFieldValues, (state, {options}) => {
     return {
       ...state,
+      isEdit: {id: 0, name: '', editMode: false},
       activeField: {
         name: state.activeField.name,
         id: state.activeField.id,
-        options: {styles, placeholder, text, label}
+        options
       }
     }
   }),
   on(removeField, (state, {id}) => {
     return {
       ...state,
+      isEdit: {id: 0, name: '', editMode: false},
       form: state.form.filter(field => id !== field.field?.id)
     }
   }),
-  on(editField, (state, {id, name, options}) => {
+  on(editField, (state, {options}) => {
     return  {
       ...state,
+      isEdit: {id: 0, name: '', editMode: false},
       form: state.form.map(field => {
-        if (field.field?.id === id) {
-          return {...field, field: {id: id, name: name, options: options}}
+        if (field.field?.id === state.isEdit.id) {
+          return {...field, field: {id: state.isEdit.id, name: state.isEdit.name, options: options}}
         } return field
       })
     }
   }),
-  on(setEditMode, (state, {id}) => {
+  on(setEditMode, (state, {id, name}) => {
     return {
       ...state,
-      isEdit: {id, editMode: !state.isEdit.editMode}
+      isEdit: {id, name, editMode: !state.isEdit.editMode}
     }
   })
 

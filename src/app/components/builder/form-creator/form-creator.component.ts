@@ -1,10 +1,10 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {select, Store} from "@ngrx/store";
-import {dragState, isEdit, selectForm} from "../../../../store/reducers/drag.reducer";
+import {dragState, selectForm} from "../../../../store/reducers/drag.reducer";
 import {Observable, Subscription} from "rxjs";
-import {IActiveField, IActiveFieldOptions} from "../../../../assets/models/IActiveField";
+import {IActiveField} from "../../../../assets/models/IActiveField";
 import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
-import {editField, removeField, setEditMode} from "../../../../store/actions/drag.actions";
+import {removeField, setEditMode} from "../../../../store/actions/drag.actions";
 
 @Component({
   selector: 'app-form-creator',
@@ -13,13 +13,11 @@ import {editField, removeField, setEditMode} from "../../../../store/actions/dra
 })
 export class FormCreatorComponent implements OnInit, OnDestroy {
   form$: Observable<Array<{field?: IActiveField}>>
-  isEdit$: Observable<boolean>;
   form_result: FormGroup;
   controlSub: Subscription | undefined;
 
   constructor(private store: Store<dragState>, private fb: FormBuilder) {
     this.form$ = store.pipe(select(selectForm))
-    this.isEdit$ = store.pipe(select(isEdit))
     this.form_result = new FormGroup({
       form_label: new FormControl('My form')
     })
@@ -39,14 +37,13 @@ export class FormCreatorComponent implements OnInit, OnDestroy {
   onSubmit() {
     window.alert(JSON.stringify(this.form_result.value))
   }
-  onRemoveField(id: number, controlName: string) {
+  onRemoveField(id:number, controlName:string) {
     this.store.dispatch(removeField({id: id}))
     this.form_result.removeControl(controlName)
   }
-  onEditField(id:number, name: string, options: IActiveFieldOptions) {
-    this.store.dispatch(editField({id, name, options}))
-  }
-  onSetEditMode(id:number) {
-    this.store.dispatch(setEditMode({id}))
+
+  onSetEditMode(id:number, name:string, label:string) {
+    this.store.dispatch(setEditMode({id, name}))
+    this.form_result.removeControl(label)
   }
 }

@@ -1,0 +1,55 @@
+<div class="form-style">
+  <p>current field is => {{activeField | ngrxPush}}</p>
+  <fieldset [formGroup]="styleForm" class="form-style-control" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="label">Field label</label>
+      <input formControlName="label" placeholder="label" id="label"/>
+      <div *ngIf="field['label'].invalid" style="color: red;">
+        That field its required
+      </div>
+    </div>
+    <div>
+      <label for="placeholder">Field placeholder</label>
+      <input formControlName="placeholder" placeholder="placeholder" id="placeholder"/>
+    </div>
+    <div>
+      <label for="text">Field text</label>
+      <input formControlName="text" placeholder="text" id="text"/>
+    </div>
+    <div>
+      <label for="required">Required</label>
+      <input formControlName="required" id="required" type="checkbox"/>
+    </div>
+    <div>
+      <label for="width">Field width</label>
+      <input formControlName="width" placeholder="width" id="width" type="number"/>
+    </div>
+    <div>
+      <label for="height">Field height</label>
+      <input formControlName="height" placeholder="height" id="height" type="number"/>
+    </div>
+    <div>
+      <label for="fontSize">Field font size</label>
+      <input formControlName="fontSize" placeholder="font size" id="fontSize" type="number"/>
+    </div>
+    <div>
+      <label for="fontWeight">Field font weight</label>
+      <input formControlName="fontWeight" placeholder="font weight" id="fontWeight" type="number"/>
+    </div>
+    <div>
+      <label for="borderStyle">Field border style</label>
+      <select formControlName="borderStyle" name="borderStyle" id="borderStyle">
+        <ng-container *ngFor="let option of borderStyles | keyvalue">
+          <option style="font-size: 18px" [value]="option.key">{{option.value}}</option>
+        </ng-container>
+      </select>
+    </div>
+    <div>
+      <label for="color">Field color</label>
+      <input formControlName="color" id="color" placeholder="color" [(colorPicker)]="styleForm.value.color"
+             [style.background]="styleForm.value.color"/>
+    </div>
+    <button (click)="onSubmit()" [disabled]="styleForm.invalid" style="cursor: pointer">submit</button>
+  </fieldset>
+</div>
+

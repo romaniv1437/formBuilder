@@ -2,4 +2,14 @@
   min-height: calc(100vh - 50px);
   width: 100%;
   display: flex;
+  .left-style-component__form {
+    color: #fff;
+    max-width: 250px;
+    width: 100%;
+    min-height: calc(100vh - 50px);
+    h2 {
+      color: #fff;
+      font-size: 30px;
+    }
+  }
 }
