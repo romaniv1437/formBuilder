@@ -3,6 +3,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {IStyles} from "../../../../assets/models/IStyle";
 import {IActiveFieldOptions} from "../../../../assets/models/IActiveField";
 import {borderStylesData} from "../../../../assets/data/borderStylesData";
+import {Store} from "@ngrx/store";
 
 
 @Component({
@@ -26,7 +27,7 @@ export class FieldStylesFormComponent implements OnInit {
   options: IActiveFieldOptions | undefined;
   borderStyles = borderStylesData;
 
-  constructor() {
+  constructor(private store: Store<Store>) {
     this.styleForm = new FormGroup({
       label: new FormControl('', Validators.required),
       placeholder: new FormControl(),
