@@ -2,6 +2,7 @@
   min-height: calc(100vh - 50px);
   background-color: rgb(44, 13, 113);
   width: 100%;
+  align-items: center;
   display: flex;
   .left-style-component__form {
     color: #fff;
@@ -14,3 +15,4 @@
     }
   }
 }
+

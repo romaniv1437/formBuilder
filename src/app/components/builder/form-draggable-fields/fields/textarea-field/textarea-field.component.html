@@ -3,7 +3,7 @@
     <div class="drag-item">
       <label>{{field?.options?.label}}</label>
       <textarea
-        [formControl]="formField?.get(field?.options?.label)"
+        [formControl]="formField?.get(field?.options?.label)" required="{{field?.options?.required}}"
         [placeholder]=field?.options?.placeholder
         [ngStyle]="{
              'width': field?.options?.styles?.width,

@@ -23,3 +23,7 @@
     }
   }
 }
+.ng-invalid.ng-touched {
+  content:"*";
+  border: 1px solid red;
+}
