@@ -10,12 +10,12 @@ describe('TextareaFieldComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TextareaFieldComponent ],
+      declarations: [TextareaFieldComponent],
       imports: [
         StoreModule.forRoot({'formBuilder': dragReducer}),
       ]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(TextareaFieldComponent);
     component = fixture.componentInstance;
@@ -25,4 +25,5 @@ describe('TextareaFieldComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
 });

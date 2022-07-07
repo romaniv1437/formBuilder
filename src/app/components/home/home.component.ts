@@ -13,6 +13,6 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
   }
   toFormBuilder() {
-    return this.router.navigate(['/create-form'])
+    return this.router.navigateByUrl('/create-form')
   }
 }

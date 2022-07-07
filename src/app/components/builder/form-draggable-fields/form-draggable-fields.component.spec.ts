@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { FormDraggableFieldsComponent } from './form-draggable-fields.component';
+import {FormDraggableFieldsComponent} from './form-draggable-fields.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {StoreModule} from "@ngrx/store";
 import {dragReducer} from "../../../../store/reducers/drag.reducer";
@@ -29,4 +29,9 @@ describe('FormDraggableFieldsComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  it('should contain text "Select Items"',  (() => {
+    const textContent: HTMLElement = fixture.nativeElement;
+    const h2 = textContent.querySelector('h2')!;
+    expect(h2.textContent).toEqual('Select Items');
+  }));
 });

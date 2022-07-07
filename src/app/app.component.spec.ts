@@ -1,9 +1,10 @@
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {ComponentFixture, inject, TestBed} from '@angular/core/testing';
 import {RouterTestingModule} from '@angular/router/testing';
 import {AppComponent} from './app.component';
 import {AuthService} from "./service/auth.service";
 import {HttpClientTestingModule} from "@angular/common/http/testing";
 import {Location} from "@angular/common";
+import {Router} from "@angular/router";
 
 describe('AppComponent', () => {
   let component: AppComponent
@@ -34,8 +35,15 @@ describe('AppComponent', () => {
     component.ngOnInit()
     expect(spy).toHaveBeenCalled()
   });
-  it('should redirect to "/" ', () => {
+  it('should redirect to "/" ',  inject([Router],(router: Router) => {
+    const spy = spyOn(router, 'navigateByUrl')
     component.toHome()
-    expect(location.path()).toBe('')
-  })
+    const url = spy.calls.first().args[0]
+    expect(url).toBe('/')
+  }));
+  it('should contain text "Angular Form Builder"', () => {
+    const appContent: HTMLElement = fixture.nativeElement;
+    const headerText = appContent.querySelector('h1')!;
+    expect(headerText.textContent).toEqual('Angular Form Builder');
+  });
 });

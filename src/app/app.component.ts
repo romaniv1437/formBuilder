@@ -18,7 +18,7 @@ export class AppComponent implements OnInit{
   }
 
   toHome() {
-    return this.router.navigate(['/'])
+    return this.router.navigateByUrl('/')
   }
 }
 
