@@ -1,13 +1,3 @@
 <div class="form-builder">
-  <div class="left-style-component__form">
-    <h2>Customize field</h2>
-    <div *ngIf="activeField$|ngrxPush" style="width: 100%;">
-      <app-field-styles-form [onSubmitForm]="addField" [activeField]="activeField$|ngrxPush"
-                             style="width: 100%;"></app-field-styles-form>
-    </div>
-    <div *ngIf="isEdit$|ngrxPush" style="width: 100%;">
-      <app-field-styles-form [onSubmitForm]="onEditField" style="width: 100%;"></app-field-styles-form>
-    </div>
-  </div>
-  <app-form-builder style="flex: 1 1 auto">></app-form-builder>
+  <app-form-builder style="flex: 1 1 auto"></app-form-builder>
 </div>

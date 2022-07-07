@@ -4,6 +4,7 @@ import { FormBuilderComponent } from './form-builder.component';
 import {StoreModule} from "@ngrx/store";
 import {dragReducer} from "../../../../store/reducers/drag.reducer";
 import {ReactiveComponentModule} from "@ngrx/component";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 describe('FormBuilderComponent', () => {
   let component: FormBuilderComponent;
@@ -14,7 +15,9 @@ describe('FormBuilderComponent', () => {
       declarations: [ FormBuilderComponent ],
       imports: [
         StoreModule.forRoot({'formBuilder': dragReducer}),
-        ReactiveComponentModule
+        ReactiveComponentModule,
+        ReactiveFormsModule,
+        FormsModule
       ]
     })
     .compileComponents();

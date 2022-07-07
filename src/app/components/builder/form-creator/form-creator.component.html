@@ -1,13 +1,13 @@
 
 <form [formGroup]="form_result" class="form-result" (ngSubmit)="onSubmit()">
-  <h2>{{form_result.get('form_label')?.value}}</h2>
+  <h2>{{form_result?.get('form_label')?.value}}</h2>
   <div class="form">
     <ng-container *ngFor="let field of form$ | async">
       <div>
         <app-form-dynamic [field]="field.field"
                           [form_result]="form_result"
-                          [onRemoveField]="onRemoveField"
-                          [onSetEditMode]="onSetEditMode"
+                          [onRemoveField]="removeField"
+                          [onSetEditMode]="setEditMode"
         ></app-form-dynamic>
       </div>
 
@@ -15,6 +15,6 @@
   </div>
 
   <div class="submit">
-    <button type="submit" [disabled]="form_result.invalid" mat-raised-button color="primary">Send</button>
+    <button type="submit" [disabled]="form_result?.invalid" mat-raised-button color="primary">Send</button>
   </div>
 </form>
