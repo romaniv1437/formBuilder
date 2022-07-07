@@ -6,4 +6,4 @@ export const addFieldToForm = createAction('[CREATE Field] form');
 export const setActiveFieldValues = createAction('[SET Field] active field', props<{options: IActiveFieldOptions}>());
 export const removeField = createAction('[REMOVE Field] field', props<{id: number}>());
 export const editField = createAction('[EDIT Field] form field', props<{options: IActiveFieldOptions}>());
-export const setEditMode = createAction('[EDIT MODE Field] form field', props<{id: number, name: string}>())
+export const setEditMode = createAction('[EDIT MODE Field] form field', props<{id: number, name: string, label: string}>())

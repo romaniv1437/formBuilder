@@ -12,12 +12,12 @@ import {IActiveField} from 'src/assets/models/IActiveField';
 export const FORM_NODE = 'formBuilder'
 
 export interface dragState {
-  isEdit: {id: number, name: string, editMode: boolean}
+  isEdit: {id: number, name: string, editMode: boolean, editFieldLabel: string}
   activeField: IActiveField
   form: Array<{field?: IActiveField}>
 }
 export const initialState:dragState = {
-  isEdit: {id: 0, name: '', editMode: false},
+  isEdit: {id: 0, name: '', editMode: false, editFieldLabel: ''},
   activeField: {
     name: '',
     id: 0,
@@ -36,14 +36,14 @@ export const dragReducer = createReducer(
   on(setDragObject, (state, {name, id}) => {
     return {
       ...state,
-      isEdit: {id: 0, name: '', editMode: false},
+      isEdit: {id: 0, name: '', editMode: false, editFieldLabel: ''},
       activeField: {name: name, id: id, options: {styles: state.activeField.options.styles, placeholder: 'placeholder', text: 'field text', label: 'field label', required: false}},
     }
   }),
   on(addFieldToForm, (state) => {
     return {
       ...state,
-      isEdit: {id: 0, name: '', editMode: false},
+      isEdit: {id: 0, name: '', editMode: false, editFieldLabel: ''},
       form: [...state.form, {field: state.activeField}],
       activeField: initialState.activeField
     }
@@ -51,7 +51,7 @@ export const dragReducer = createReducer(
   on(setActiveFieldValues, (state, {options}) => {
     return {
       ...state,
-      isEdit: {id: 0, name: '', editMode: false},
+      isEdit: {id: 0, name: '', editMode: false, editFieldLabel: ''},
       activeField: {
         name: state.activeField.name,
         id: state.activeField.id,
@@ -62,14 +62,14 @@ export const dragReducer = createReducer(
   on(removeField, (state, {id}) => {
     return {
       ...state,
-      isEdit: {id: 0, name: '', editMode: false},
+      isEdit: {id: 0, name: '', editMode: false, editFieldLabel: ''},
       form: state.form.filter(field => id !== field.field?.id)
     }
   }),
   on(editField, (state, {options}) => {
     return  {
       ...state,
-      isEdit: {id: 0, name: '', editMode: false},
+      isEdit: {id: 0, name: '', editMode: false, editFieldLabel: ''},
       form: state.form.map(field => {
         if (field.field?.id === state.isEdit.id) {
           return {...field, field: {id: state.isEdit.id, name: state.isEdit.name, options: options}}
@@ -77,10 +77,10 @@ export const dragReducer = createReducer(
       })
     }
   }),
-  on(setEditMode, (state, {id, name}) => {
+  on(setEditMode, (state, {id, name, label}) => {
     return {
       ...state,
-      isEdit: {id, name, editMode: !state.isEdit.editMode}
+      isEdit: {id, name, editMode: !state.isEdit.editMode, editFieldLabel: label}
     }
   })
 
@@ -103,4 +103,8 @@ export const selectForm = createSelector(
 export const isEdit = createSelector(
   selectorDragState,
   state => state.isEdit.editMode
+)
+export const editFieldLabel = createSelector(
+  selectorDragState,
+  state => state.isEdit.editFieldLabel
 )

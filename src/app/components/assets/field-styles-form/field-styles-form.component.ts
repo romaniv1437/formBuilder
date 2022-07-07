@@ -3,7 +3,6 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {IStyles} from "../../../../assets/models/IStyle";
 import {IActiveFieldOptions} from "../../../../assets/models/IActiveField";
 import {borderStylesData} from "../../../../assets/data/borderStylesData";
-import {Store} from "@ngrx/store";
 
 
 @Component({
@@ -13,15 +12,21 @@ import {Store} from "@ngrx/store";
 })
 export class FieldStylesFormComponent implements OnInit {
   @Input() title: string = '';
+  // for add or edit field
   @Input() onSubmitForm: any;
-  @Input() onEditField: any;
+  // for add field
   @Input() activeField: string | undefined
+  // for editField
+  @Input() onEditField: any;
+  @Input() editFieldLabel: string | null = '';
+  @Input() form_result: FormGroup = new FormGroup<any>('')
+  // local data
   styleForm: FormGroup;
   styles: IStyles = {};
   options: IActiveFieldOptions | undefined;
   borderStyles = borderStylesData;
 
-  constructor(private store: Store<Store>) {
+  constructor() {
     this.styleForm = new FormGroup({
       label: new FormControl('', Validators.required),
       placeholder: new FormControl(),
@@ -54,7 +59,7 @@ export class FieldStylesFormComponent implements OnInit {
       styles: this.styles,
       required: this.styleForm.value.required
     }
-    this.onSubmitForm(this.options)
+    this.onSubmitForm(this.options, this.editFieldLabel)
     this.styleForm.reset()
   }
 
