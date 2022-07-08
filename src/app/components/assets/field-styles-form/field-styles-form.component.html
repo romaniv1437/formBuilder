@@ -1,6 +1,6 @@
 <div class="form-style">
   <p>current field is => {{activeField | ngrxPush}}</p>
-  <fieldset [formGroup]="styleForm" class="form-style-control" (ngSubmit)="onSubmit()">
+  <form [formGroup]="styleForm" class="form-style-control" (ngSubmit)="onSubmit()" id="styleForm">
     <div>
       <label for="label">Field label</label>
       <input formControlName="label" placeholder="label" id="label"/>
@@ -49,7 +49,7 @@
       <input formControlName="color" id="color" placeholder="color" [(colorPicker)]="styleForm.value.color"
              [style.background]="styleForm.value.color"/>
     </div>
-    <button (click)="onSubmit()" [disabled]="styleForm.invalid" style="cursor: pointer">submit</button>
-  </fieldset>
+    <button [disabled]="styleForm.invalid" style="cursor: pointer">submit</button>
+  </form>
 </div>
 

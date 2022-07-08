@@ -1,8 +1,9 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { ButtonFieldComponent } from './button-field.component';
+import {ButtonFieldComponent} from './button-field.component';
 import {StoreModule} from "@ngrx/store";
 import {dragReducer} from "../../../../../../store/reducers/drag.reducer";
+import {testField} from "../../../../../../assets/data/testField";
 
 describe('ButtonFieldComponent', () => {
   let component: ButtonFieldComponent;
@@ -24,5 +25,12 @@ describe('ButtonFieldComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+  it('check if field render properly', () => {
+    component.field = testField;
+    component.ngOnInit();
+    fixture.detectChanges();
+    expect(component).toBeTruthy();
+    expect(component.field).toEqual(testField)
   });
 });

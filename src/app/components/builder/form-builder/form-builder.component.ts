@@ -60,15 +60,15 @@ export class FormBuilderComponent implements OnInit {
     this.store.dispatch(setActiveFieldValues({options}));
     this.store.dispatch(addFieldToForm());
   }
-  onEditField(options:IActiveFieldOptions, controlName: string) {
+  editField(options:IActiveFieldOptions, controlName: string) {
     this.store.dispatch(editField({options}));
     this.form_result.removeControl(controlName)
   }
-  onRemoveField(id:number, controlName:string) {
+  removeField(id:number, controlName:string) {
     this.store.dispatch(removeField({id: id}));
     this.form_result.removeControl(controlName);
   }
-  onSetEditMode(id:number, name:string, label:string) {
+  setEditMode(id:number, name:string, label:string) {
     this.store.dispatch(setEditMode({id, name, label}));
   }
   // 2  for draggable objects

@@ -8,7 +8,7 @@ import {FormGroup} from "@angular/forms";
   styleUrls: ['./checkbox-field.component.scss']
 })
 export class CheckboxFieldComponent implements OnInit {
-  @Input() field: IActiveField | null | undefined;
+  @Input() field: IActiveField | null | undefined
   @Input() formField: FormGroup | any;
 
   ngOnInit(): void {

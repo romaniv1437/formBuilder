@@ -8,7 +8,7 @@ import {FormGroup} from "@angular/forms";
   styleUrls: ['./select-field.component.scss']
 })
 export class SelectFieldComponent implements OnInit {
-  @Input() field: IActiveField | null | undefined;
+  @Input() field: IActiveField | null | undefined
   @Input() formField: FormGroup | any;
   @Input() options: Array<{value: string, text: string}> = [];
 

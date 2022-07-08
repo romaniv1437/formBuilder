@@ -14,7 +14,7 @@ import {Store} from "@ngrx/store";
 export class FieldStylesFormComponent implements OnInit {
   @Input() title: string = '';
   // for add or edit field
-  @Input() onSubmitForm: any;
+  @Input() submitForm: any;
   // for add field
   @Input() activeField: string | undefined
   // for editField
@@ -30,14 +30,14 @@ export class FieldStylesFormComponent implements OnInit {
   constructor(private store: Store<Store>) {
     this.styleForm = new FormGroup({
       label: new FormControl('', Validators.required),
-      placeholder: new FormControl(),
-      text: new FormControl(),
-      color: new FormControl(),
-      width: new FormControl(),
-      height: new FormControl(),
-      fontSize: new FormControl(),
-      borderStyle: new FormControl(),
-      fontWeight: new FormControl(),
+      placeholder: new FormControl(''),
+      text: new FormControl(''),
+      color: new FormControl(''),
+      width: new FormControl(''),
+      height: new FormControl(''),
+      fontSize: new FormControl(''),
+      borderStyle: new FormControl(''),
+      fontWeight: new FormControl(''),
       required: new FormControl(false)
     })
   }
@@ -60,7 +60,7 @@ export class FieldStylesFormComponent implements OnInit {
       styles: this.styles,
       required: this.styleForm.value.required
     }
-    this.onSubmitForm(this.options, this.editFieldLabel)
+    this.submitForm(this.options, this.editFieldLabel)
     this.styleForm.reset()
   }
 

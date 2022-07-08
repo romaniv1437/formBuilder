@@ -12,12 +12,13 @@ import {Store} from "@ngrx/store";
 export class FormDynamicComponent implements OnInit {
   @Input() field: IActiveField | undefined
   @Input() form_result: FormGroup | any;
-  @Input() onRemoveField: any
-  @Input() onSetEditMode: any
+  @Input() removeField: any
+  @Input() setEditMode: any
   field_name = dragData;
   // do not remove, it's for onRemoveField()
   constructor(private store: Store<Store>) {
   }
+
 
   ngOnInit(): void {
 

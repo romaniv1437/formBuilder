@@ -11,7 +11,6 @@ import {FormGroup} from "@angular/forms";
 export class InputFieldComponent implements OnInit {
   @Input() field: IActiveField | null | undefined
   @Input() formField: FormGroup | any;
-
   ngOnInit(): void {
   }
 }

@@ -1,6 +1,6 @@
 <div>
   <mat-card>
-    <div class="drag-item">
+    <div class="drag-item" [formGroup]="formField" *ngIf="formField">
       <label>{{field?.options?.label}}</label>
       <span>
         <input type="checkbox" id="check"

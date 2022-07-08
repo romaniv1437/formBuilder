@@ -4,7 +4,14 @@ import {FormCreatorComponent} from './form-creator.component';
 import {StoreModule} from "@ngrx/store";
 import {dragReducer} from "../../../../store/reducers/drag.reducer";
 import {ReactiveComponentModule} from "@ngrx/component";
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormControl, FormGroup, ReactiveFormsModule} from "@angular/forms";
+import {of} from "rxjs";
+import {findComponent} from "../../assets/findComponent/findComponent";
+import {FormDynamicComponent} from "./form-dynamic/form-dynamic.component";
+import {InputFieldComponent} from "../form-draggable-fields/fields/input-field/input-field.component";
+import {MatIconModule} from "@angular/material/icon";
+import {MatCardModule} from "@angular/material/card";
+import {testField} from "../../../../assets/data/testField";
 
 describe('FormCreatorComponent', () => {
   let component: FormCreatorComponent;
@@ -12,14 +19,16 @@ describe('FormCreatorComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FormCreatorComponent],
+      declarations: [ FormCreatorComponent, FormDynamicComponent, InputFieldComponent ],
       imports: [
         ReactiveFormsModule,
+        MatIconModule,
+        MatCardModule,
         StoreModule.forRoot({'formBuilder': dragReducer}),
         ReactiveComponentModule
       ]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(FormCreatorComponent);
     component = fixture.componentInstance;
@@ -28,5 +37,20 @@ describe('FormCreatorComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+  it('should dynamically render field component', () => {
+    component.form_result = new FormGroup<any>({
+      'test input': new FormControl()
+    })
+    // @ts-ignore
+    // typescript want undefined here
+    component.form$ = of([{field: testField}]);
+    fixture.detectChanges();
+    const formDynamicField = findComponent(fixture, 'app-form-dynamic');
+    const formDynamicComponentField = formDynamicField.componentInstance.field;
+    // check if dynamicField component exists
+    expect(formDynamicField).not.toBeNull();
+    // check if field that have dynamicField component it's the field that we want
+    expect(formDynamicComponentField).toEqual(testField)
   });
 });

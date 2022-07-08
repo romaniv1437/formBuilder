@@ -1,6 +1,6 @@
 <div>
   <mat-card style="padding: 10px; display: flex; justify-content: center; ">
-    <div class="drag-item">
+    <div class="drag-item" [formGroup]="formField" *ngIf="formField">
       <label>{{field?.options?.label}}</label>
       <select
         [formControl]="formField?.get(field?.options?.label)" required="{{field?.options?.required}}"
