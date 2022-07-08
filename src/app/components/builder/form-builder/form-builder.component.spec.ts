@@ -20,6 +20,7 @@ import {SelectFieldComponent} from "../form-draggable-fields/fields/select-field
 import {ButtonFieldComponent} from "../form-draggable-fields/fields/button-field/button-field.component";
 import {CheckboxFieldComponent} from "../form-draggable-fields/fields/checkbox-field/checkbox-field.component";
 import {MatCardModule} from "@angular/material/card";
+import {MatIconModule} from "@angular/material/icon";
 
 describe('FormBuilderComponent', () => {
   let component: FormBuilderComponent;
@@ -46,7 +47,8 @@ describe('FormBuilderComponent', () => {
         FormsModule,
         DragDropModule,
         ColorPickerModule,
-        MatCardModule
+        MatCardModule,
+        MatIconModule
       ]
     })
     .compileComponents();

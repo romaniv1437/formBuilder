@@ -4,6 +4,7 @@ import {ButtonFieldComponent} from './button-field.component';
 import {StoreModule} from "@ngrx/store";
 import {dragReducer} from "../../../../../../store/reducers/drag.reducer";
 import {testField} from "../../../../../../assets/data/testField";
+import {MatCardModule} from "@angular/material/card";
 
 describe('ButtonFieldComponent', () => {
   let component: ButtonFieldComponent;
@@ -14,6 +15,7 @@ describe('ButtonFieldComponent', () => {
       declarations: [ ButtonFieldComponent ],
       imports: [
         StoreModule.forRoot({'formBuilder': dragReducer}),
+        MatCardModule
       ]
     })
     .compileComponents();

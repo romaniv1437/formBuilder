@@ -5,6 +5,17 @@ import {ReactiveComponentModule} from '@ngrx/component';
 import {StoreModule} from "@ngrx/store";
 import {dragReducer} from "../../../store/reducers/drag.reducer";
 import {findComponent} from "../assets/findComponent/findComponent";
+import {FormBuilderComponent} from "./form-builder/form-builder.component";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {FormCreatorComponent} from "./form-creator/form-creator.component";
+import {FormDraggableFieldsComponent} from "./form-draggable-fields/form-draggable-fields.component";
+import {InputFieldComponent} from "./form-draggable-fields/fields/input-field/input-field.component";
+import {ButtonFieldComponent} from "./form-draggable-fields/fields/button-field/button-field.component";
+import {TextareaFieldComponent} from "./form-draggable-fields/fields/textarea-field/textarea-field.component";
+import {SelectFieldComponent} from "./form-draggable-fields/fields/select-field/select-field.component";
+import {CheckboxFieldComponent} from "./form-draggable-fields/fields/checkbox-field/checkbox-field.component";
+import {MatCardModule} from "@angular/material/card";
+import {DragDropModule} from "@angular/cdk/drag-drop";
 
 describe('BuilderComponent', () => {
   let component: BuilderComponent;
@@ -12,10 +23,24 @@ describe('BuilderComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BuilderComponent ],
+      declarations: [
+        BuilderComponent,
+        FormBuilderComponent,
+        FormCreatorComponent,
+        FormDraggableFieldsComponent,
+        InputFieldComponent,
+        ButtonFieldComponent,
+        TextareaFieldComponent,
+        SelectFieldComponent,
+        CheckboxFieldComponent
+      ],
       imports: [
         StoreModule.forRoot({'formBuilder': dragReducer}),
-        ReactiveComponentModule
+        ReactiveComponentModule,
+        ReactiveFormsModule,
+        FormsModule,
+        MatCardModule,
+        DragDropModule
       ]
     })
     .compileComponents();
