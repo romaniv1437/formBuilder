@@ -19,10 +19,13 @@ describe('AuthService', () => {
     expect(service).toBeTruthy();
   });
   it('should login', fakeAsync(() => {
+    // set mock token, this token we get from mockService later
     const mockToken = 'fakeJWT'
+
+    // login user will get mockToken from mockService, bcz we didn't send request to real server
     service.loginUser({email: 'testEmail', password: 'testPassword'})
       .subscribe(
-        token => expect(token).toEqual(mockToken)
+        token => expect(token).toEqual(mockToken) // check if token equal mockToken
       )
     mockService.expectOne({
       method: 'POST',
@@ -30,7 +33,10 @@ describe('AuthService', () => {
     }).flush(mockToken)
   }));
   it('should register', fakeAsync(() => {
+    // set mock token, this token we get from mockService later
     const mockToken = 'fakeJWT'
+
+    // register user will get mockToken from mockService, bcz we didn't send request to real server
     service.registerUser({email: 'testEmail', password: 'testPassword'})
       .subscribe(
         token => expect(token).toEqual(mockToken)

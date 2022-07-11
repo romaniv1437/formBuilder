@@ -55,24 +55,32 @@ describe('FormDraggableFieldsComponent', () => {
     expect(h2.textContent).toEqual('Select Items');
   });
   it('should render draggable fields', () => {
+
+    // create form group with test field, 'test input'
     component.showForm = new FormGroup<any>({
       'test input': new FormControl()
     })
-
+    // set field$ of test field
     component.field$ = of(testField)
+
+    // call ngOnInit and detectChanges
     component.ngOnInit()
     fixture.detectChanges()
+
+    // find components
     const inputComponent = findComponent(fixture, 'app-input-field');
     const textareaComponent = findComponent(fixture, 'app-textarea-field');
     const buttonComponent = findComponent(fixture, 'app-button-field');
     const checkboxComponent = findComponent(fixture, 'app-checkbox-field');
     const selectComponent = findComponent(fixture, 'app-select-field');
+
     // check if components render
     expect(selectComponent).not.toBeNull();
     expect(checkboxComponent).not.toBeNull();
     expect(buttonComponent).not.toBeNull();
     expect(textareaComponent).not.toBeNull();
     expect(inputComponent).not.toBeNull();
+
     // check if fields equal
     expect(inputComponent.componentInstance.field).toEqual(testField)
     expect(textareaComponent.componentInstance.field).toEqual(testField);

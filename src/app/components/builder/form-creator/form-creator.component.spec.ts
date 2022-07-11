@@ -39,17 +39,27 @@ describe('FormCreatorComponent', () => {
     expect(component).toBeTruthy();
   });
   it('should dynamically render field component', () => {
+
+    // create form group with field 'test input'
     component.form_result = new FormGroup<any>({
       'test input': new FormControl()
     })
-    // @ts-ignore
-    // typescript want undefined here
+
+    // crete form of array with testField
     component.form$ = of([{field: testField}]);
+
+    // detectChanges
     fixture.detectChanges();
+
+    // find dynamic field component, here by switch case will be rendered 1 of 5 field component
     const formDynamicField = findComponent(fixture, 'app-form-dynamic');
+
+    // find field from component Instance
     const formDynamicComponentField = formDynamicField.componentInstance.field;
+
     // check if dynamicField component exists
     expect(formDynamicField).not.toBeNull();
+
     // check if field that have dynamicField component it's the field that we want
     expect(formDynamicComponentField).toEqual(testField)
   });

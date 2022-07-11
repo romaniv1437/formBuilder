@@ -37,7 +37,7 @@ export class FormBuilderComponent implements OnInit {
   // for draggable objects
   data: any
 
-  constructor(private store: Store<dragState>, private fb: FormBuilder) {
+  constructor(public store: Store<dragState>, private fb: FormBuilder) {
     this.controlSub = new Subscription();
     this.form$ = store.pipe(select(selectForm));
     this.isEdit$ = store.pipe(select(isEdit));

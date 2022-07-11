@@ -33,7 +33,11 @@ describe('FieldStylesFormComponent', () => {
     expect(component).toBeTruthy();
   });
   it('check initial values for styleForm', () => {
+
+    // get styleForm from component
     const styleForm = component.styleForm;
+
+    // write all fields with initial values
     const styleFormValues = {
       label: '',
       text: '',
@@ -46,27 +50,39 @@ describe('FieldStylesFormComponent', () => {
       borderStyle: '',
       required: false
     }
+
+    // check if styleForm values equal our values
     expect(styleForm.value).toEqual(styleFormValues)
+
   });
   it('check form value after enter it and validation', () => {
-    const styleFormLabelElement:
+    // here we check if we can input some value, and how it works
+
+    // get elements
+    const styleFormLabelElement: // label element
       HTMLInputElement = fixture.debugElement.nativeElement.querySelector('#styleForm')!.querySelector('#label')!;
-    const styleFormPlaceholderElement:
+    const styleFormPlaceholderElement: // placeholder element
       HTMLInputElement = fixture.debugElement.nativeElement.querySelector('#styleForm')!.querySelector('#placeholder')!;
-    const styleFormTextElement:
+    const styleFormTextElement: // text element
       HTMLInputElement = fixture.debugElement.nativeElement.querySelector('#styleForm')!.querySelector('#text')!;
-    styleFormTextElement.value = 'test text';
-    styleFormPlaceholderElement.value = 'test placeholder'
-    styleFormLabelElement.value = 'test label';
+
+    // set values to elements that we get from querySelector
+    styleFormLabelElement.value = 'test label'; // set value to label element
+    styleFormPlaceholderElement.value = 'test placeholder' // set value to placeholder element
+    styleFormTextElement.value = 'test text'; // set value to text element
+
+    // dispatch input event and detectChanges
     styleFormTextElement.dispatchEvent(new Event('input'))
     styleFormPlaceholderElement.dispatchEvent(new Event('input'))
     styleFormLabelElement.dispatchEvent(new Event('input'));
     fixture.detectChanges();
 
+    // check if form values equal to value that we input
     expect(styleFormLabelElement.value).toEqual(component.styleForm.get('label')?.value);
     expect(styleFormPlaceholderElement.value).toEqual(component.styleForm.get('placeholder')?.value);
     expect(styleFormTextElement.value).toEqual(component.styleForm.get('text')?.value);
     expect(component.styleForm?.errors).toBeNull();
+
     // these 3 fields works good, then next more fields works too
   });
 });

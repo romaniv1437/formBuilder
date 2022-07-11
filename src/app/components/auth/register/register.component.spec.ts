@@ -37,16 +37,26 @@ describe('RegisterComponent', () => {
     expect(component).toBeTruthy();
   });
   it('should render register form', () => {
-    const loginForm: HTMLElement = fixture.nativeElement
-    const title = loginForm.querySelector('h2')!;
-    const emailInput = loginForm.querySelector('#email')!;
-    const passwordInput = loginForm.querySelector('#password');
-    const submitButton = loginForm.querySelector('button')!;
-    const helpText = loginForm.querySelector('p')!;
+
+    // get register form
+    const registerForm: HTMLElement = fixture.nativeElement
+
+    // get titles from h2, button, p
+    const title = registerForm.querySelector('h2')!;
+    const submitButton = registerForm.querySelector('button')!;
+    const helpText = registerForm.querySelector('p')!;
+
+    // expect titles will be equal to title that we want
     expect(title.textContent).toEqual('Registration');
-    expect(emailInput).toBeTruthy();
-    expect(passwordInput).toBeTruthy();
     expect(submitButton.textContent).toEqual('Submit');
     expect(helpText.textContent).toEqual('Already have account? Log in')
+
+    // get input fields, email, password
+    const emailInput = registerForm.querySelector('#email')!;
+    const passwordInput = registerForm.querySelector('#password');
+
+    // check if fields truthy
+    expect(emailInput).toBeTruthy();
+    expect(passwordInput).toBeTruthy();
   });
 });

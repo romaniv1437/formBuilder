@@ -54,9 +54,15 @@ describe('BuilderComponent', () => {
     expect(component).toBeTruthy();
   });
   it('should render form-builder component', () => {
+
+    // call ngOnInit
     component.ngOnInit();
     fixture.detectChanges();
+
+    // find formBuilder component
     const formBuilder = findComponent(fixture, 'app-form-builder');
+
+    // if formBuilder not null, then formBuilder render properly
     expect(formBuilder).not.toBeNull();
   });
 });

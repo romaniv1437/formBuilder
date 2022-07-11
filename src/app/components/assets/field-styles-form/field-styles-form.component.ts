@@ -60,7 +60,7 @@ export class FieldStylesFormComponent implements OnInit {
       styles: this.styles,
       required: this.styleForm.value.required
     }
-    this.submitForm(this.options, this.editFieldLabel)
+    if (this.editFieldLabel !== this.styleForm.value.label) this.submitForm(this.options, this.editFieldLabel);
     this.styleForm.reset()
   }
 

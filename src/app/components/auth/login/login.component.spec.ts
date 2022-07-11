@@ -38,16 +38,26 @@ describe('LoginComponent', () => {
     expect(component).toBeTruthy();
   });
   it('should render login form', () => {
+
+    // get login form html
     const loginForm: HTMLElement = fixture.nativeElement
+
+    // get titles from h2, button, p
     const title = loginForm.querySelector('h2')!;
-    const emailInput = loginForm.querySelector('#email')!;
-    const passwordInput = loginForm.querySelector('#password');
     const submitButton = loginForm.querySelector('button')!;
     const helpText = loginForm.querySelector('p')!;
+
+    // check if titles equal to title that we want
     expect(title.textContent).toEqual('Login');
-    expect(emailInput).toBeTruthy();
-    expect(passwordInput).toBeTruthy();
     expect(submitButton.textContent).toEqual('Submit');
     expect(helpText.textContent).toEqual('Do not have account? Register')
+
+    // get input fields, email, password
+    const emailInput = loginForm.querySelector('#email')!;
+    const passwordInput = loginForm.querySelector('#password');
+
+    // check if fields truthy
+    expect(emailInput).toBeTruthy();
+    expect(passwordInput).toBeTruthy();
   })
 });
