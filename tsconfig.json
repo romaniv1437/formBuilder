@@ -26,13 +26,13 @@
     "lib": [
       "es2020",
       "dom"
-    ],
+    ]
   },
   "include": ["../../node_modules/cypress", "**/*"],
   "exclude": [
     "node_modules",
     "cypress.config.ts",
-    "cypress/**/*.ts"
+    "cypress/**/*.ts",
   ],
   "angularCompilerOptions": {
     "strictPropertyInitialization" : false,
