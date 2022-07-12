@@ -21,6 +21,11 @@ import {CheckboxFieldComponent} from "../form-draggable-fields/fields/checkbox-f
 import {MatCardModule} from "@angular/material/card";
 import {MatIconModule} from "@angular/material/icon";
 import {IActiveFieldOptions} from "../../../../assets/models/IActiveField";
+import {MatFormFieldModule, MatLabel} from "@angular/material/form-field";
+import {MatCheckboxModule} from "@angular/material/checkbox";
+import {MatInputModule} from "@angular/material/input";
+import {MatSelectModule} from "@angular/material/select";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 describe('FormBuilderComponent', () => {
 
@@ -40,8 +45,10 @@ describe('FormBuilderComponent', () => {
         SelectFieldComponent,
         ButtonFieldComponent,
         CheckboxFieldComponent,
+        MatLabel
       ],
       imports: [
+        BrowserAnimationsModule,
         StoreModule.forRoot({'formBuilder': dragReducer}),
         ReactiveComponentModule,
         ReactiveFormsModule,
@@ -50,10 +57,14 @@ describe('FormBuilderComponent', () => {
         ColorPickerModule,
         MatCardModule,
         MatIconModule,
+        MatFormFieldModule,
+        MatCheckboxModule,
+        MatInputModule,
+        MatSelectModule
 
       ],
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(FormBuilderComponent);
     component = fixture.componentInstance;
@@ -241,7 +252,11 @@ describe('FormBuilderComponent', () => {
 
     // call editField, it will change existed field from form by id
     // edit field will dispatch to store once time, and spy now will be called 3 times
-    component.editField(<IActiveFieldOptions>{label: 'test label', placeholder: 'test placeholder', styles: {}}, 'test label')
+    component.editField(<IActiveFieldOptions>{
+      label: 'test label',
+      placeholder: 'test placeholder',
+      styles: {}
+    }, 'test label')
 
     // remove field calls once, and it will remove field from the form array
     // now spy will be called 4 times

@@ -51,7 +51,7 @@ describe('My First Test', () => {
     cy.get('#height').type('40')
     cy.get('#fontSize').type('20')
     cy.get('#fontWeight').type('500')
-    cy.get('#borderStyle').select('solid')
+    cy.get('#borderStyle').click().get('mat-option').contains('solid').click()
     cy.get('#color').type('#000')
     cy.contains('submit').click()
   })
@@ -80,7 +80,7 @@ describe('My First Test', () => {
     cy.get('#height').type('50')
     cy.get('#fontSize').type('16')
     cy.get('#fontWeight').type('500')
-    cy.get('#borderStyle').select('dashed')
+    cy.get('#borderStyle').click().get('mat-option').contains('dashed').click()
     cy.get('#color').type('#ff0bce')
 
     // submitting edit form
@@ -122,7 +122,7 @@ describe('My First Test', () => {
     cy.get('#height').type('40')
     cy.get('#fontSize').type('20')
     cy.get('#fontWeight').type('500')
-    cy.get('#borderStyle').select('solid')
+    cy.get('#borderStyle').click().get('mat-option').contains('solid').click()
     cy.get('#color').type('#ff0fd6')
     cy.contains('submit').click()
   })
@@ -144,7 +144,7 @@ describe('My First Test', () => {
     cy.get('#height').type('40')
     cy.get('#fontSize').type('20')
     cy.get('#fontWeight').type('500')
-    cy.get('#borderStyle').select('solid')
+    cy.get('#borderStyle').click().get('mat-option').contains('solid').click()
     cy.get('#color').type('#3efbcf')
     cy.contains('submit').click()
   })
@@ -192,7 +192,7 @@ describe('My First Test', () => {
     cy.get('#height').type('30')
     cy.get('#fontSize').type('20')
     cy.get('#fontWeight').type('500')
-    cy.get('#borderStyle').select('solid')
+    cy.get('#borderStyle').click().get('mat-option').contains('solid').click()
     cy.get('#color').type('#00ff05')
 
     // submitting edit form

@@ -6,6 +6,12 @@ import {dragReducer} from "../../../../store/reducers/drag.reducer";
 import {ReactiveComponentModule} from "@ngrx/component";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {ColorPickerModule} from "ngx-color-picker";
+import {MatFormFieldModule, MatLabel} from "@angular/material/form-field";
+import {MatCardModule} from "@angular/material/card";
+import {MatInputModule} from "@angular/material/input";
+import {MatSelectModule} from "@angular/material/select";
+import {MatCheckboxModule} from "@angular/material/checkbox";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 describe('FieldStylesFormComponent', () => {
   let component: FieldStylesFormComponent;
@@ -13,16 +19,22 @@ describe('FieldStylesFormComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FieldStylesFormComponent ],
+      declarations: [FieldStylesFormComponent, MatLabel],
       imports: [
+        BrowserAnimationsModule,
         StoreModule.forRoot({'formBuilder': dragReducer}),
         ReactiveComponentModule,
         ReactiveFormsModule,
         FormsModule,
-        ColorPickerModule
+        ColorPickerModule,
+        MatFormFieldModule,
+        MatCardModule,
+        MatInputModule,
+        MatSelectModule,
+        MatCheckboxModule
       ]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(FieldStylesFormComponent);
     component = fixture.componentInstance;

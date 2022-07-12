@@ -41,6 +41,9 @@ import {HomeComponent} from './components/home/home.component';
 import {TokenInterceptor} from "./interceptors/token.interceptor";
 import {MatIconModule} from "@angular/material/icon";
 import {FieldStylesFormComponent} from './components/assets/field-styles-form/field-styles-form.component';
+import {MatCheckboxModule} from "@angular/material/checkbox";
+import {MatOptionModule} from "@angular/material/core";
+import {MatSelectModule} from "@angular/material/select";
 
 @NgModule({
   declarations: [
@@ -60,25 +63,28 @@ import {FieldStylesFormComponent} from './components/assets/field-styles-form/fi
     HomeComponent,
     FieldStylesFormComponent
   ],
-    imports: [
-        ReactiveComponentModule,
-        BrowserModule,
-        AppRoutingModule,
-        DragDropModule,
-        BrowserAnimationsModule,
-        FormsModule,
-        ReactiveFormsModule,
-        MatCardModule,
-        StoreModule.forRoot({'formBuilder': dragReducer}),
-        StoreDevtoolsModule.instrument({maxAge: 25, logOnly: environment.production}),
-        ColorPickerModule,
-        NgxdModule,
-        HttpClientModule,
-        MatInputModule,
-        MatButtonModule,
-        MatTabsModule,
-        MatIconModule
-    ],
+  imports: [
+    ReactiveComponentModule,
+    BrowserModule,
+    AppRoutingModule,
+    DragDropModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatCardModule,
+    StoreModule.forRoot({'formBuilder': dragReducer}),
+    StoreDevtoolsModule.instrument({maxAge: 25, logOnly: environment.production}),
+    ColorPickerModule,
+    NgxdModule,
+    HttpClientModule,
+    MatInputModule,
+    MatButtonModule,
+    MatTabsModule,
+    MatIconModule,
+    MatCheckboxModule,
+    MatOptionModule,
+    MatSelectModule
+  ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
