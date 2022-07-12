@@ -3,7 +3,7 @@ import {FormBuilderComponent} from './form-builder.component';
 import {StoreModule} from "@ngrx/store";
 import {dragReducer} from "../../../../store/reducers/drag.reducer";
 import {ReactiveComponentModule} from "@ngrx/component";
-import {FormControl, FormGroup, FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {of} from "rxjs";
 import {findComponent} from "../../assets/findComponent/findComponent";
 import {testField} from "../../../../assets/data/testField";
@@ -26,6 +26,12 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
 import {MatInputModule} from "@angular/material/input";
 import {MatSelectModule} from "@angular/material/select";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {FormCreatorPortalComponent} from "../form-creator/form-creator-portal/form-creator-portal.component";
+import {
+  DraggableFieldsPortalComponent
+} from "../form-draggable-fields/draggable-fields-portal/draggable-fields-portal.component";
+import {FormAccordionPortalComponent} from "../form-accordion/form-accordion-portal/form-accordion-portal.component";
+import {PortalModule} from "@angular/cdk/portal";
 
 describe('FormBuilderComponent', () => {
 
@@ -45,7 +51,10 @@ describe('FormBuilderComponent', () => {
         SelectFieldComponent,
         ButtonFieldComponent,
         CheckboxFieldComponent,
-        MatLabel
+        MatLabel,
+        FormCreatorPortalComponent,
+        DraggableFieldsPortalComponent,
+        FormAccordionPortalComponent
       ],
       imports: [
         BrowserAnimationsModule,
@@ -60,7 +69,8 @@ describe('FormBuilderComponent', () => {
         MatFormFieldModule,
         MatCheckboxModule,
         MatInputModule,
-        MatSelectModule
+        MatSelectModule,
+        PortalModule
 
       ],
     })
@@ -75,43 +85,21 @@ describe('FormBuilderComponent', () => {
     expect(component).toBeTruthy();
   });
   it('should render start text and components', () => {
-    // get formBuilder text content, and components
-
-    // GET TEXT CONTENT
-
-    const formBuilderText: HTMLElement = fixture.nativeElement;
-    const leftSidebarTitle = formBuilderText.querySelector('.accordion h2')!;
-
-    // check if text content equal to text that we want
-    expect(leftSidebarTitle.textContent).toEqual('Customize field')
+    // get formBuilder components
 
     // FIND CHILD COMPONENTS
 
     // find draggableFields, formCreator by fixture and selector
+    const formAccordion = findComponent(fixture, 'app-form-accordion')
     const draggableFields = findComponent(fixture, 'app-form-draggable-fields')
     const formCreator = findComponent(fixture, 'app-form-creator')
 
     // check is component be truthy
+    expect(formAccordion).toBeTruthy()
     expect(draggableFields).toBeTruthy()
     expect(formCreator).toBeTruthy()
   });
-  it('should render add field form component', () => {
-    // here we check if add field form render properly
-
-    // set active field to render add form component
-    component.activeField$ = of('input')
-
-    // call ngOnInit and detectChanges
-    component.ngOnInit();
-    fixture.detectChanges();
-
-    // find addField component by fixture and selector
-    const addFieldForm = findComponent(fixture, 'app-field-styles-form')
-
-    // check addField component will not to be null
-    expect(addFieldForm).not.toBeNull();
-  });
-  it('should render edit field form component', () => {
+  it('should render accordion component', () => {
     // here we check if edit field component render properly
 
     // set isEdit of true for render edit field component
@@ -122,7 +110,7 @@ describe('FormBuilderComponent', () => {
     fixture.detectChanges();
 
     // find edit field form by fixture and selector
-    const editFieldForm = findComponent(fixture, 'app-field-styles-form')
+    const editFieldForm = findComponent(fixture, 'app-form-accordion')
 
     // check editField component will not to be null
     expect(editFieldForm).not.toBeNull();
@@ -150,92 +138,10 @@ describe('FormBuilderComponent', () => {
   it('should render draggable fields component', () => {
 
     // find draggableFields component by fixture and selector
-    const draggableFields = findComponent(fixture, 'app-form-draggable-fields');
+    const draggableFields = findComponent(fixture, 'app-form-accordion');
 
     // check draggableField will not be null
     expect(draggableFields).not.toBeNull();
-  });
-  it('should add new field from callback', () => {
-
-    // here we check if callback function will be called
-
-    // set label
-    const label = 'new input'
-
-    // set new FormGroup in component
-    // this form_result will be input props in child component
-    component.form_result = new FormGroup<any>({
-      'test input': new FormControl()
-    })
-
-    // set activeField stream of 'input', for render addField component
-    component.activeField$ = of('input')
-
-    // call ngOnInit and detectChanges
-    component.ngOnInit();
-    fixture.detectChanges();
-
-    // find addField component by fixture and selector
-    let addFieldForm = findComponent(fixture, 'app-field-styles-form');
-
-    // check if addFieldForm exists
-    expect(addFieldForm).not.toBeNull();
-
-    // spy to submitForm, it's addField from FormBuilderComponent
-    const spy = spyOn(addFieldForm.componentInstance, 'submitForm')
-
-    // set some value to label bcz it's required
-    addFieldForm.componentInstance.styleForm.get('label')?.setValue(label)
-
-    // check if label set
-    expect(addFieldForm.componentInstance.styleForm.get('label')?.value).toEqual(label)
-
-    // after check, submit form to call submitForm(that in onSubmit method)
-    addFieldForm.componentInstance.onSubmit()
-
-    // if submitForm called, we dispatch action to store
-    expect(spy).toHaveBeenCalled()
-  });
-  it('should edit field from callback', () => {
-
-    // here we check if callback function will be called
-
-    // set label
-    const label = 'new input'
-
-    // set new FormGroup in component
-    // this form_result will be input props in child component
-    component.form_result = new FormGroup<any>({
-      'test input': new FormControl()
-    });
-
-    // set isEdit stream of true, for set edit mode and render editField component
-    component.isEdit$ = of(true)
-
-    // call ngOnInit and detectChanges
-    component.ngOnInit();
-    fixture.detectChanges();
-
-    // find editField component by fixture and selector
-    const editFieldForm = findComponent(fixture, 'app-field-styles-form');
-
-    // check if editFieldForm exists
-    expect(editFieldForm).not.toBeNull();
-
-    // spy to submitForm, it's editField from FormBuilderComponent
-    const spy = spyOn(editFieldForm.componentInstance, 'submitForm');
-
-    // set some value to label bcz it's required
-    editFieldForm.componentInstance.styleForm.get('label')?.setValue(label)
-
-    // check if label set
-    expect(editFieldForm.componentInstance.styleForm.get('label')?.value).toEqual(label)
-
-    // after check, submit form to call submitForm(that in onSubmit method)
-    editFieldForm.componentInstance.onSubmit();
-
-    // if submitForm called, we dispatch action to store
-    expect(spy).toHaveBeenCalled();
   });
   it('should add and edit and remove field', () => {
 

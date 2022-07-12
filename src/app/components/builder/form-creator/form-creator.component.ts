@@ -9,13 +9,15 @@ import {FormGroup} from "@angular/forms";
   styleUrls: ['./form-creator.component.scss']
 })
 export class FormCreatorComponent implements AfterContentChecked{
+
   @Input() form$: Observable<Array<{field?: IActiveField}>> | undefined
   @Input() form_result: FormGroup = new FormGroup<any>('')
   @Input() removeField: any;
   @Input() setEditMode: any;
 
-  constructor(private ref: ChangeDetectorRef) {
-  }
+  constructor(
+    private ref: ChangeDetectorRef,
+  ) {}
   ngAfterContentChecked() {
     this.ref.detectChanges();
   }

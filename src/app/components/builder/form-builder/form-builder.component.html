@@ -1,31 +1,34 @@
 <div class="form-builder">
-  <div class="accordion">
-    <h2>Customize field</h2>
-    <div *ngIf="activeField$|ngrxPush" style="width: 100%;">
-      <app-field-styles-form [submitForm]="addField" [activeField]="activeField$|ngrxPush"
-                             style="width: 100%;"></app-field-styles-form>
-    </div>
-    <div *ngIf="isEdit$|ngrxPush" style="width: 100%;">
-      <app-field-styles-form [submitForm]="editField" style="width: 100%;"
-                             [editFieldLabel]="editFieldLabel$|async"
-                             [form_result]="form_result"></app-field-styles-form>
-    </div>
-  </div>
 
-  <div class="form-builder-field" cdkDropList
-       [cdkDropListData]="data"
-       (cdkDropListDropped)="drop($event)">
+  <section id="form-accordion" style="width: 100%; max-width: 250px;"></section>
+
+  <div class="form-builder-field">
     <div class="form-builder-result">
-      <app-form-creator
-        [form_result]="form_result"
-        [form$]="form$"
-        [removeField]="removeField"
-        [setEditMode]="setEditMode"
-      ></app-form-creator>
+      <section id="form-creator"></section>
     </div>
-
-    <app-form-draggable-fields></app-form-draggable-fields>
+    <section id="draggable-fields"></section>
   </div>
+</div>
+
+
+<div class="render_fields" cdkDropList [cdkDropListData]="data" (cdkDropListDropped)="drop($event)">
+  <app-form-accordion
+                      [isEdit]="isEdit$|ngrxPush"
+                      [activeField]="activeField$|ngrxPush"
+                      [addField]="addField"
+                      [editField]="editField"
+                      [editFieldLabel]="editFieldLabel$|ngrxPush"
+                      [form_result]="form_result"
+  ></app-form-accordion>
+
+  <app-form-creator
+    [form_result]="form_result"
+    [form$]="form$"
+    [removeField]="removeField"
+    [setEditMode]="setEditMode"></app-form-creator>
+
+  <app-form-draggable-fields></app-form-draggable-fields>
+
 </div>
 
 

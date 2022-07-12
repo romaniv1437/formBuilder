@@ -37,7 +37,7 @@ describe('My First Test', () => {
     cy.get('#input')
       .trigger("mousedown", {button: 0})
     cy.wait(500);
-    cy.get('#cdk-drop-list-1')
+    cy.get('#form-creator')
       .trigger('mousemove')
       .trigger('mouseleave')
     cy.contains('Select Items').click();
@@ -109,7 +109,7 @@ describe('My First Test', () => {
     cy.get('#input')
       .trigger("mousedown", {button: 0})
     cy.wait(500);
-    cy.get('#cdk-drop-list-1')
+    cy.get('#form-creator')
       .trigger('mousemove')
       .trigger('mouseleave')
     cy.contains('Select Items').click();
@@ -131,7 +131,7 @@ describe('My First Test', () => {
     cy.get('#input')
       .trigger("mousedown", {button: 0})
     cy.wait(500);
-    cy.get('#cdk-drop-list-1')
+    cy.get('#form-creator')
       .trigger('mousemove')
       .trigger('mouseleave')
     cy.contains('Select Items').click();
@@ -153,7 +153,7 @@ describe('My First Test', () => {
     cy.get('#checkbox')
       .trigger("mousedown", {button: 0})
     cy.wait(500);
-    cy.get('#cdk-drop-list-1')
+    cy.get('#form-creator')
       .trigger('mousemove')
       .trigger('mouseleave')
     cy.contains('Select Items').click();
@@ -183,7 +183,7 @@ describe('My First Test', () => {
 
   // let's edit login form to registration form, we just edit Username Input
   it('should edit username input correctly', () => {
-    cy.get('#cdk-drop-list-1 > div > app-form-creator > form > div.form > div:nth-child(1) > app-form-dynamic > div > div > div > mat-icon:nth-child(2)').click()
+    cy.get('#form-creator > form > div.form > div:nth-child(1) > app-form-dynamic > div > div > div > mat-icon:nth-child(2)').click()
 
     // lets go edit field
     cy.get('#label').type('Email')

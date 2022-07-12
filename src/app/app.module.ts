@@ -44,6 +44,11 @@ import {FieldStylesFormComponent} from './components/assets/field-styles-form/fi
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {MatOptionModule} from "@angular/material/core";
 import {MatSelectModule} from "@angular/material/select";
+import {PortalModule} from "@angular/cdk/portal";
+import { FormCreatorPortalComponent } from './components/builder/form-creator/form-creator-portal/form-creator-portal.component';
+import { DraggableFieldsPortalComponent } from './components/builder/form-draggable-fields/draggable-fields-portal/draggable-fields-portal.component';
+import { FormAccordionComponent } from './components/builder/form-accordion/form-accordion.component';
+import { FormAccordionPortalComponent } from './components/builder/form-accordion/form-accordion-portal/form-accordion-portal.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +66,11 @@ import {MatSelectModule} from "@angular/material/select";
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    FieldStylesFormComponent
+    FieldStylesFormComponent,
+    FormCreatorPortalComponent,
+    DraggableFieldsPortalComponent,
+    FormAccordionComponent,
+    FormAccordionPortalComponent
   ],
   imports: [
     ReactiveComponentModule,
@@ -83,7 +92,8 @@ import {MatSelectModule} from "@angular/material/select";
     MatIconModule,
     MatCheckboxModule,
     MatOptionModule,
-    MatSelectModule
+    MatSelectModule,
+    PortalModule
   ],
   providers: [
     {

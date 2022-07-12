@@ -1,20 +1,22 @@
+<app-form-creator-portal>
+  <form [formGroup]="form_result" class="form-result" (ngSubmit)="onSubmit()">
+    <h2>{{form_result?.get('form_label')?.value}}</h2>
+    <div class="form">
+      <ng-container *ngFor="let field of form$ | ngrxPush">
+        <div>
+          <app-form-dynamic [field]="field.field"
+                            [form_result]="form_result"
+                            [removeField]="removeField"
+                            [setEditMode]="setEditMode"
+          ></app-form-dynamic>
+        </div>
 
-<form [formGroup]="form_result" class="form-result" (ngSubmit)="onSubmit()">
-  <h2>{{form_result?.get('form_label')?.value}}</h2>
-  <div class="form">
-    <ng-container *ngFor="let field of form$ | ngrxPush">
-      <div>
-        <app-form-dynamic [field]="field.field"
-                          [form_result]="form_result"
-                          [removeField]="removeField"
-                          [setEditMode]="setEditMode"
-        ></app-form-dynamic>
-      </div>
+      </ng-container>
+    </div>
 
-    </ng-container>
-  </div>
+    <div class="submit">
+      <button type="submit" [disabled]="form_result?.invalid" mat-raised-button color="primary">Send</button>
+    </div>
+  </form>
+</app-form-creator-portal>
 
-  <div class="submit">
-    <button type="submit" [disabled]="form_result?.invalid" mat-raised-button color="primary">Send</button>
-  </div>
-</form>
