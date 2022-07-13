@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   constructor(private auth: AuthService, private router: Router, private route: ActivatedRoute) {
     this.loginForm = new FormGroup( {
-      email: new FormControl(null, [Validators.required, Validators.email]),
+      username: new FormControl(null, [Validators.required]),
       password: new FormControl(null, [Validators.required])
     })
   }
