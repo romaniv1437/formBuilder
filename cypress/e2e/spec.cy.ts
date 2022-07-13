@@ -13,9 +13,9 @@ describe('My First Test', () => {
   })
   it('render login page, and log in, and check if guard dont redirect to login in next time', () => {
     // login
-    const email = 'test@gmail.com'
-    const password = '123456'
-    cy.get('#email').type(email)
+    const username = 'username'
+    const password = 'password'
+    cy.get('#username').type(username)
     cy.get('#password').type(password)
 
     // now we redirect to /create-form
