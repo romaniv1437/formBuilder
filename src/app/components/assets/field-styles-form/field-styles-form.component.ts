@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {IStyles} from "../../../../assets/models/IStyle";
 import {IActiveFieldOptions} from "../../../../assets/models/IActiveField";
@@ -9,7 +9,8 @@ import {Store} from "@ngrx/store";
 @Component({
   selector: 'app-field-styles-form',
   templateUrl: './field-styles-form.component.html',
-  styleUrls: ['./field-styles-form.component.scss']
+  styleUrls: ['./field-styles-form.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FieldStylesFormComponent implements OnInit {
   @Input() title: string = '';

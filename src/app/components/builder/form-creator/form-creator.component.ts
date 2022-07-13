@@ -1,4 +1,4 @@
-import {AfterContentChecked, ChangeDetectorRef, Component, Input} from '@angular/core';
+import {AfterContentChecked, ChangeDetectionStrategy, ChangeDetectorRef, Component, Input} from '@angular/core';
 import {Observable} from "rxjs";
 import {IActiveField} from "../../../../assets/models/IActiveField";
 import {FormGroup} from "@angular/forms";
@@ -7,7 +7,8 @@ import {CdkDragDrop, moveItemInArray} from "@angular/cdk/drag-drop";
 @Component({
   selector: 'app-form-creator',
   templateUrl: './form-creator.component.html',
-  styleUrls: ['./form-creator.component.scss']
+  styleUrls: ['./form-creator.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FormCreatorComponent implements AfterContentChecked{
 
@@ -15,9 +16,8 @@ export class FormCreatorComponent implements AfterContentChecked{
   @Input() form_result: FormGroup = new FormGroup<any>('')
   @Input() removeField: any;
   @Input() setEditMode: any;
+  @Input() updatedAt: number|undefined;
   formCopy: any;
-
-
 
   constructor(
     private ref: ChangeDetectorRef,
@@ -33,15 +33,12 @@ export class FormCreatorComponent implements AfterContentChecked{
   onSubmit() {
     window.alert(JSON.stringify(this.form_result?.value))
   }
-
   drop(event: CdkDragDrop<any>) {
-    if (event.previousContainer === event.container) {
-      moveItemInArray(
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex
-      );
-    }
+    moveItemInArray(
+      event.container.data,
+      event.previousIndex,
+      event.currentIndex
+    );
   }
 }
 

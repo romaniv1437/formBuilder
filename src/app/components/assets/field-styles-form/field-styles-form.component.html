@@ -46,7 +46,7 @@
       <input matInput formControlName="color" id="color" placeholder="color" [(colorPicker)]="styleForm?.value.color!"/>
 <!--[style.background]="styleForm.value.color"-->
     </mat-form-field>
-    <button mat-raised-button color="primary" [disabled]="styleForm.invalid" style="cursor: pointer">submit</button>
+    <button mat-raised-button color="primary" [disabled]="styleForm.invalid" style="cursor: pointer">{{'submit'|upperCase}}</button>
   </form>
 </div>
 

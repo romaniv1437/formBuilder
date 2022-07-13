@@ -49,6 +49,9 @@ import { FormCreatorPortalComponent } from './components/builder/form-creator/fo
 import { DraggableFieldsPortalComponent } from './components/builder/form-draggable-fields/draggable-fields-portal/draggable-fields-portal.component';
 import { FormAccordionComponent } from './components/builder/form-accordion/form-accordion.component';
 import { FormAccordionPortalComponent } from './components/builder/form-accordion/form-accordion-portal/form-accordion-portal.component';
+import { EffectsModule } from '@ngrx/effects';
+import {AppEffects} from "./app.effects";
+import { UpperCasePipe } from './pipes/upper-case.pipe';
 
 @NgModule({
   declarations: [
@@ -70,7 +73,8 @@ import { FormAccordionPortalComponent } from './components/builder/form-accordio
     FormCreatorPortalComponent,
     DraggableFieldsPortalComponent,
     FormAccordionComponent,
-    FormAccordionPortalComponent
+    FormAccordionPortalComponent,
+    UpperCasePipe
   ],
   imports: [
     ReactiveComponentModule,
@@ -93,7 +97,8 @@ import { FormAccordionPortalComponent } from './components/builder/form-accordio
     MatCheckboxModule,
     MatOptionModule,
     MatSelectModule,
-    PortalModule
+    PortalModule,
+    EffectsModule.forRoot([AppEffects])
   ],
   providers: [
     {

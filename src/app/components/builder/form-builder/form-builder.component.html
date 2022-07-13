@@ -22,6 +22,7 @@
   ></app-form-accordion>
 
   <app-form-creator
+    [updatedAt]="updatedAt$|ngrxPush"
     [form_result]="form_result"
     [form$]="form$"
     [removeField]="removeField"
