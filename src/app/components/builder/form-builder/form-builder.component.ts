@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnDestroy, OnInit} from '@angular/core';
 import {CdkDragDrop} from "@angular/cdk/drag-drop";
 import {
   addFieldToForm,
@@ -27,7 +27,7 @@ import {dragState} from "../../../../store/reducers/drag.reducer";
   styleUrls: ['./form-builder.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class FormBuilderComponent implements OnInit {
+export class FormBuilderComponent implements OnInit, OnDestroy {
   // for form creator & accordion
   form$: Observable<Array<{field?: IActiveField}>>
   form_result: FormGroup;
@@ -78,5 +78,8 @@ export class FormBuilderComponent implements OnInit {
   // 2  for draggable objects
   drop(event: CdkDragDrop<string[]>) {
     this.store.dispatch(setActiveField({name: event.item.data, id: Date.now()}));
+  }
+  ngOnDestroy() {
+    this.controlSub.unsubscribe()
   }
 }
