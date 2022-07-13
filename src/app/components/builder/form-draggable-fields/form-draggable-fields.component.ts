@@ -1,15 +1,17 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnDestroy, OnInit} from '@angular/core';
 import {dragData} from "../../../../assets/data/dragData";
 import {Observable, Subscription} from "rxjs";
 import {IActiveField} from "../../../../assets/models/IActiveField";
 import {select, Store} from "@ngrx/store";
-import {dragState, selectDefaultField} from "../../../../store/reducers/drag.reducer";
+import {dragState} from "../../../../store/reducers/drag.reducer";
 import {FormBuilder, FormGroup} from "@angular/forms";
+import {selectDefaultField} from "../../../../store/selectors/drag.selector";
 
 @Component({
   selector: 'app-form-draggable-fields',
   templateUrl: './form-draggable-fields.component.html',
-  styleUrls: ['./form-draggable-fields.component.scss']
+  styleUrls: ['./form-draggable-fields.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FormDraggableFieldsComponent implements OnInit, OnDestroy{
   field$: Observable<IActiveField> | null;
