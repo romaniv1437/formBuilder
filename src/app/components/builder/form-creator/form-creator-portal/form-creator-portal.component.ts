@@ -21,9 +21,7 @@ import {CdkPortal, DomPortalHost} from "@angular/cdk/portal";
 export class FormCreatorPortalComponent implements OnInit, AfterViewInit, OnDestroy {
 // portal
   // @ts-ignore
-  @ViewChild(CdkPortal)
-  // @ts-ignore
-  private portal: CdkPortal;
+  @ViewChild(CdkPortal) portal: CdkPortal;
   // @ts-ignore
   private host: DomPortalHost;
   constructor( private componentFactoryResolver: ComponentFactoryResolver,
