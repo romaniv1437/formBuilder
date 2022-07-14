@@ -7,6 +7,7 @@ import {ActivatedRouteSnapshot, Router, RouterStateSnapshot} from "@angular/rout
 import {AuthService} from "../service/auth.service";
 import {Location} from "@angular/common";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 function fakeRouterState(url: string): RouterStateSnapshot {
   return {
@@ -22,7 +23,7 @@ describe('AuthGuardGuard', () => {
   let router: Router;
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientModule, RouterTestingModule, MatSnackBarModule]
+      imports: [HttpClientModule, RouterTestingModule, MatSnackBarModule, BrowserAnimationsModule]
     });
     location = TestBed.get(Location);
     guard = TestBed.inject(AuthGuard);

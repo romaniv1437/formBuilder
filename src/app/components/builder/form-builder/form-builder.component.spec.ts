@@ -34,6 +34,7 @@ import {FormAccordionPortalComponent} from "../form-accordion/form-accordion-por
 import {PortalModule} from "@angular/cdk/portal";
 import {UpperCasePipe} from "../../../pipes/upper-case.pipe";
 import {FormAccordionComponent} from "../form-accordion/form-accordion.component";
+import {ChangeDetectionStrategy, NO_ERRORS_SCHEMA} from "@angular/core";
 
 describe('FormBuilderComponent', () => {
 
@@ -75,9 +76,12 @@ describe('FormBuilderComponent', () => {
         MatInputModule,
         MatSelectModule,
         PortalModule
-
       ],
+      schemas: [NO_ERRORS_SCHEMA],
     })
+      .overrideComponent(FormBuilderComponent, {
+        set: { changeDetection: ChangeDetectionStrategy.Default }
+      })
       .compileComponents();
 
     fixture = TestBed.createComponent(FormBuilderComponent);

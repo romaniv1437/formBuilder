@@ -53,6 +53,7 @@ import { EffectsModule } from '@ngrx/effects';
 import {AppEffects} from "./app.effects";
 import { UpperCasePipe } from './pipes/upper-case.pipe';
 import {MatSnackBarModule} from "@angular/material/snack-bar";
+import { AuthInputComponent } from './components/assets/auth-input/auth-input.component';
 
 @NgModule({
   declarations: [
@@ -75,7 +76,8 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
     DraggableFieldsPortalComponent,
     FormAccordionComponent,
     FormAccordionPortalComponent,
-    UpperCasePipe
+    UpperCasePipe,
+    AuthInputComponent
   ],
   imports: [
     ReactiveComponentModule,
