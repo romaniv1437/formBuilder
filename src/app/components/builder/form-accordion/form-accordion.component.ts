@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 
 @Component({
   selector: 'app-form-accordion',
@@ -6,7 +6,7 @@ import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
   styleUrls: ['./form-accordion.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class FormAccordionComponent implements OnInit {
+export class FormAccordionComponent {
 
   @Input() activeField: string|undefined;
   @Input() isEdit: boolean|undefined;
@@ -16,8 +16,5 @@ export class FormAccordionComponent implements OnInit {
   @Input() form_result: any;
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }

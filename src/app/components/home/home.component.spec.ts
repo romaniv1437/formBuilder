@@ -4,6 +4,7 @@ import {HomeComponent} from './home.component';
 import {RouterTestingModule} from "@angular/router/testing";
 import {Location} from "@angular/common";
 import {Router} from "@angular/router";
+import {UpperCasePipe} from "../../pipes/upper-case.pipe";
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -12,7 +13,7 @@ describe('HomeComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HomeComponent ],
+      declarations: [ HomeComponent, UpperCasePipe ],
       imports: [RouterTestingModule]
     })
     .compileComponents();
@@ -39,7 +40,7 @@ describe('HomeComponent', () => {
     // expected url will be /create-form
     expect(url).toBe('/create-form')
   }));
-  it('should render text "Want create form easily? Try out this form builder", "Explore"', () => {
+  it('should render text "Want create form easily? Try out this form builder", "EXPLORE"', () => {
 
     // get page content text
     const pageContent: HTMLElement = fixture.nativeElement;
@@ -51,6 +52,6 @@ describe('HomeComponent', () => {
 
     // expected h1, button text content equal text, that we want to see
     expect(h1.textContent).toEqual('Want create form easily? Try out this form builder');
-    expect(button.textContent).toEqual('Explore')
+    expect(button.textContent).toEqual('EXPLORE')
   });
 });

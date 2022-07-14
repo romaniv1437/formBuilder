@@ -12,6 +12,7 @@ import {MatInputModule} from "@angular/material/input";
 import {MatSelectModule} from "@angular/material/select";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {UpperCasePipe} from "../../../pipes/upper-case.pipe";
 
 describe('FieldStylesFormComponent', () => {
   let component: FieldStylesFormComponent;
@@ -19,7 +20,7 @@ describe('FieldStylesFormComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [FieldStylesFormComponent, MatLabel],
+      declarations: [FieldStylesFormComponent, MatLabel, UpperCasePipe],
       imports: [
         BrowserAnimationsModule,
         StoreModule.forRoot({'formBuilder': dragReducer}),

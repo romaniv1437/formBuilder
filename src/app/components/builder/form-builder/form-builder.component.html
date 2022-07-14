@@ -12,24 +12,28 @@
 
 
 <div class="render_fields" cdkDropList [cdkDropListData]="data" (cdkDropListDropped)="drop($event)">
-  <app-form-accordion
+  <app-form-accordion-portal>
+   <app-form-accordion
                       [isEdit]="isEdit$|ngrxPush"
                       [activeField]="activeField$|ngrxPush"
                       [addField]="addField"
                       [editField]="editField"
                       [editFieldLabel]="editFieldLabel$|ngrxPush"
-                      [form_result]="form_result"
-  ></app-form-accordion>
+                      [form_result]="form_result"></app-form-accordion>
+  </app-form-accordion-portal>
 
-  <app-form-creator
+  <app-form-creator-portal>
+    <app-form-creator
     [updatedAt]="updatedAt$|ngrxPush"
     [form_result]="form_result"
     [form$]="form$"
     [removeField]="removeField"
     [setEditMode]="setEditMode"></app-form-creator>
+  </app-form-creator-portal>
 
-  <app-form-draggable-fields></app-form-draggable-fields>
-
+  <app-draggable-fields-portal>
+    <app-form-draggable-fields></app-form-draggable-fields>
+  </app-draggable-fields-portal>
 </div>
 
 

@@ -53,11 +53,11 @@ describe('LoginComponent', () => {
     expect(helpText.textContent).toEqual('Do not have account? Register')
 
     // get input fields, email, password
-    const emailInput = loginForm.querySelector('#email')!;
+    const usernameInput = loginForm.querySelector('#username')!;
     const passwordInput = loginForm.querySelector('#password');
 
     // check if fields truthy
-    expect(emailInput).toBeTruthy();
+    expect(usernameInput).toBeTruthy();
     expect(passwordInput).toBeTruthy();
   })
 });

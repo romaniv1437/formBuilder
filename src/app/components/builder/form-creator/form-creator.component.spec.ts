@@ -12,6 +12,8 @@ import {InputFieldComponent} from "../form-draggable-fields/fields/input-field/i
 import {MatIconModule} from "@angular/material/icon";
 import {MatCardModule} from "@angular/material/card";
 import {testField} from "../../../../assets/data/testField";
+import {UpperCasePipe} from "../../../pipes/upper-case.pipe";
+import {DragDropModule} from "@angular/cdk/drag-drop";
 
 describe('FormCreatorComponent', () => {
   let component: FormCreatorComponent;
@@ -19,13 +21,14 @@ describe('FormCreatorComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FormCreatorComponent, FormDynamicComponent, InputFieldComponent ],
+      declarations: [ FormCreatorComponent, FormDynamicComponent, InputFieldComponent, UpperCasePipe ],
       imports: [
         ReactiveFormsModule,
         MatIconModule,
         MatCardModule,
         StoreModule.forRoot({'formBuilder': dragReducer}),
-        ReactiveComponentModule
+        ReactiveComponentModule,
+        DragDropModule,
       ]
     })
       .compileComponents();
@@ -42,15 +45,15 @@ describe('FormCreatorComponent', () => {
 
     // create form group with field 'test input'
     component.form_result = new FormGroup<any>({
-      'test input': new FormControl()
+      'field label': new FormControl()
     })
 
     // crete form of array with testField
     component.form$ = of([{field: testField}]);
 
     // detectChanges
+    component.ngOnInit()
     fixture.detectChanges();
-
     // find dynamic field component, here by switch case will be rendered 1 of 5 field component
     const formDynamicField = findComponent(fixture, 'app-form-dynamic');
 

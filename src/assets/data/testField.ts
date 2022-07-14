@@ -2,9 +2,17 @@ export const testField = {
   id: 1,
   name: 'input',
   options: {
-    label: 'test input',
-    placeholder: 'test placeholder',
-    styles: {},
+    placeholder: 'placeholder',
+    label: 'field label',
+    text: 'field text',
+    styles: {
+      width: '200px',
+      height: '40px',
+      borderStyle: 'solid',
+      fontSize: '16px',
+      fontWeight: '500',
+      color: 'black'
+    },
     required: false
   },
 };

@@ -20,7 +20,7 @@ import {CdkDragDrop, moveItemInArray} from "@angular/cdk/drag-drop";
 })
 export class FormCreatorComponent implements AfterContentChecked, OnInit, OnDestroy{
 
-  @Input() form$: Observable<Array<{field?: IActiveField}>> | undefined
+  @Input() form$: Observable<Array<{field?: IActiveField}>>
   @Input() form_result: FormGroup = new FormGroup<any>('')
   @Input() removeField: any;
   @Input() setEditMode: any;
@@ -31,6 +31,7 @@ export class FormCreatorComponent implements AfterContentChecked, OnInit, OnDest
 
   constructor(private ref: ChangeDetectorRef) {
     this.controlSub = new Subscription();
+    this.form$ = new Observable<Array<{field?: IActiveField}>>()
   }
   ngOnInit() {
     this.controlSub = this.form$?.subscribe(value => {

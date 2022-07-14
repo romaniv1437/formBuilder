@@ -29,28 +29,20 @@ import {dragState} from "../../../../store/reducers/drag.reducer";
 })
 export class FormBuilderComponent implements OnInit, OnDestroy {
   // for form creator & accordion
-  form$: Observable<Array<{field?: IActiveField}>>
-  form_result: FormGroup;
-  activeField$: Observable<string>;
-  isEdit$: Observable<boolean>;
-  editFieldLabel$: Observable<string>;
-  updatedAt$: Observable<number>;
+  form$: Observable<Array<{field?: IActiveField}>> = this.store.pipe(select(selectForm));
+  form_result: FormGroup = new FormGroup({
+    form_label: new FormControl('My form')
+  });
+  activeField$: Observable<string> = this.store.pipe(select(selectActiveField));
+  isEdit$: Observable<boolean> = this.store.pipe(select(isEdit));
+  editFieldLabel$: Observable<string> = this.store.pipe(select(editFieldLabel));
+  updatedAt$: Observable<number> = this.store.pipe(select(updatedAtSelector))
   // for control subscriptions
-  controlSub: Subscription;
+  controlSub: Subscription  = new Subscription();
   // for draggable objects
   data: any
 
-  constructor(public store: Store<dragState>, private fb: FormBuilder) {
-    this.controlSub = new Subscription();
-    this.updatedAt$ = store.pipe(select(updatedAtSelector))
-    this.form$ = store.pipe(select(selectForm));
-    this.isEdit$ = store.pipe(select(isEdit));
-    this.editFieldLabel$ = store.pipe(select(editFieldLabel));
-    this.activeField$ = this.store.pipe(select(selectActiveField));
-    this.form_result = new FormGroup({
-      form_label: new FormControl('My form')
-    });
-  }
+  constructor(public store: Store<dragState>, private fb: FormBuilder) {}
   ngOnInit(): void {
     // create form controls by form$ array
     this.controlSub = this.form$.subscribe(

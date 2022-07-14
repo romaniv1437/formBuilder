@@ -16,6 +16,7 @@ import {SelectFieldComponent} from "./form-draggable-fields/fields/select-field/
 import {CheckboxFieldComponent} from "./form-draggable-fields/fields/checkbox-field/checkbox-field.component";
 import {MatCardModule} from "@angular/material/card";
 import {DragDropModule} from "@angular/cdk/drag-drop";
+import {UpperCasePipe} from "../../pipes/upper-case.pipe";
 
 describe('BuilderComponent', () => {
   let component: BuilderComponent;
@@ -32,7 +33,8 @@ describe('BuilderComponent', () => {
         ButtonFieldComponent,
         TextareaFieldComponent,
         SelectFieldComponent,
-        CheckboxFieldComponent
+        CheckboxFieldComponent,
+        UpperCasePipe
       ],
       imports: [
         StoreModule.forRoot({'formBuilder': dragReducer}),

@@ -15,6 +15,8 @@ import {SelectFieldComponent} from "./fields/select-field/select-field.component
 import {MatCardModule} from "@angular/material/card";
 import {DragDropModule} from "@angular/cdk/drag-drop";
 import {testField} from "../../../../assets/data/testField";
+import {DraggableFieldsPortalComponent} from "./draggable-fields-portal/draggable-fields-portal.component";
+import {PortalModule} from "@angular/cdk/portal";
 
 describe('FormDraggableFieldsComponent', () => {
   let component: FormDraggableFieldsComponent;
@@ -28,7 +30,8 @@ describe('FormDraggableFieldsComponent', () => {
         TextareaFieldComponent,
         ButtonFieldComponent,
         CheckboxFieldComponent,
-        SelectFieldComponent
+        SelectFieldComponent,
+        DraggableFieldsPortalComponent
       ],
       imports: [
         ReactiveFormsModule,
@@ -36,7 +39,8 @@ describe('FormDraggableFieldsComponent', () => {
         StoreModule.forRoot({'formBuilder': dragReducer}),
         ReactiveComponentModule,
         MatCardModule,
-        DragDropModule
+        DragDropModule,
+        PortalModule
       ]
     })
     .compileComponents();
@@ -55,18 +59,17 @@ describe('FormDraggableFieldsComponent', () => {
     expect(h2.textContent).toEqual('Select Items');
   });
   it('should render draggable fields', () => {
-
     // create form group with test field, 'test input'
+    component.ngOnInit()
     component.showForm = new FormGroup<any>({
       'test input': new FormControl()
     })
     // set field$ of test field
+    component.field$ = null
     component.field$ = of(testField)
 
     // call ngOnInit and detectChanges
-    component.ngOnInit()
     fixture.detectChanges()
-
     // find components
     const inputComponent = findComponent(fixture, 'app-input-field');
     const textareaComponent = findComponent(fixture, 'app-textarea-field');

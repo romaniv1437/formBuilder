@@ -1,11 +1,11 @@
 import {ChangeDetectionStrategy, Component, OnDestroy, OnInit} from '@angular/core';
 import {dragData} from "../../../../assets/data/dragData";
-import {Observable, Subscription} from "rxjs";
+import {Observable, of, Subscription} from "rxjs";
 import {IActiveField} from "../../../../assets/models/IActiveField";
-import {select, Store} from "@ngrx/store";
+import {Store} from "@ngrx/store";
 import {dragState} from "../../../../store/reducers/drag.reducer";
 import {FormBuilder, FormGroup} from "@angular/forms";
-import {selectDefaultField} from "../../../../store/selectors/drag.selector";
+import {testField} from "../../../../assets/data/testField";
 
 @Component({
   selector: 'app-form-draggable-fields',
@@ -19,7 +19,7 @@ export class FormDraggableFieldsComponent implements OnInit, OnDestroy{
   showForm: FormGroup;
   controlSub: Subscription | undefined;
   constructor(private store: Store<dragState>, private fb: FormBuilder) {
-    this.field$ = this.store.pipe(select(selectDefaultField))
+    this.field$ = of(testField)
     this.showForm = new FormGroup({})
   }
   ngOnInit() {

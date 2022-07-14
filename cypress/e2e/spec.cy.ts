@@ -4,10 +4,10 @@ describe('My First Test', () => {
     cy.visit('/')
     cy.contains('Angular Form Builder')
     cy.contains('Want create form easily? Try out this form builder')
-    cy.contains('Explore')
+    cy.contains('EXPLORE')
   })
   it('click to Explore button, and redirect to login page', () => {
-    const button = cy.contains('Explore')
+    const button = cy.contains('EXPLORE')
     button.click()
     cy.contains('Login')
   })
@@ -28,7 +28,7 @@ describe('My First Test', () => {
     cy.contains('Angular Form Builder').click()
 
     // click explore and redirect to /create-form
-    cy.contains('Explore').click()
+    cy.contains('EXPLORE').click()
 
     // check if page loaded
     cy.contains('Customize field')
@@ -53,7 +53,7 @@ describe('My First Test', () => {
     cy.get('#fontWeight').type('500')
     cy.get('#borderStyle').click().get('mat-option').contains('solid').click()
     cy.get('#color').type('#000')
-    cy.contains('submit').click()
+    cy.contains('SUBMIT').click()
   })
   it('input value to dynamically rendered field', () => {
 
@@ -61,7 +61,7 @@ describe('My First Test', () => {
     cy.contains('Username').next().click().type('romaniv1437')
 
     // click to send button
-    cy.contains('Send').click()
+    cy.contains('SEND').click()
 
     // after send we get alert, so get data from alert and show it in console
     cy.on('window:alert', msg => {
@@ -84,14 +84,14 @@ describe('My First Test', () => {
     cy.get('#color').type('#ff0bce')
 
     // submitting edit form
-    cy.contains('submit').click()
+    cy.contains('SUBMIT').click()
   })
   it('get data from edited field', () => {
 // get field by name that we input in label field
     cy.contains('Password').next().click().type('MyPassword')
 
     // click to send button
-    cy.contains('Send').click()
+    cy.contains('SEND').click()
 
     // after send we get alert, so get data from alert and show it in console
     cy.on('window:alert', msg => {
@@ -124,7 +124,7 @@ describe('My First Test', () => {
     cy.get('#fontWeight').type('500')
     cy.get('#borderStyle').click().get('mat-option').contains('solid').click()
     cy.get('#color').type('#ff0fd6')
-    cy.contains('submit').click()
+    cy.contains('SUBMIT').click()
   })
   it('should create Password input', () => {
     // drag and drop input
@@ -146,7 +146,7 @@ describe('My First Test', () => {
     cy.get('#fontWeight').type('500')
     cy.get('#borderStyle').click().get('mat-option').contains('solid').click()
     cy.get('#color').type('#3efbcf')
-    cy.contains('submit').click()
+    cy.contains('SUBMIT').click()
   })
   it('should create remember me checkbox', () => {
     // drag and drop input
@@ -164,7 +164,7 @@ describe('My First Test', () => {
     cy.get('#fontSize').type('20')
     cy.get('#fontWeight').type('500')
     cy.get('#color').type('#00ffea')
-    cy.contains('submit').click()
+    cy.contains('SUBMIT').click()
   })
   // now we fill form with some test values
   it('should fill values in login form', () => {
@@ -173,7 +173,7 @@ describe('My First Test', () => {
     cy.contains('Remember me').next().click()
 
     // click to send button
-    cy.contains('Send').click()
+    cy.contains('SEND').click()
 
     // after send we get alert, so get data from alert and show it in console
     cy.on('window:alert', msg => {
@@ -183,7 +183,7 @@ describe('My First Test', () => {
 
   // let's edit login form to registration form, we just edit Username Input
   it('should edit username input correctly', () => {
-    cy.get('#form-creator > form > div.form > div:nth-child(1) > app-form-dynamic > div > div > div > mat-icon:nth-child(2)').click()
+    cy.get('#cdk-drop-list-3 > div:nth-child(1) > app-form-dynamic > div > div > div > mat-icon:nth-child(2)').click()
 
     // lets go edit field
     cy.get('#label').type('Email')
@@ -196,12 +196,12 @@ describe('My First Test', () => {
     cy.get('#color').type('#00ff05')
 
     // submitting edit form
-    cy.contains('submit').click()
+    cy.contains('SUBMIT').click()
   })
   it('get last value from form', () => {
     cy.contains('Email').next().click().type('My email')
     // click to send button
-    cy.contains('Send').click()
+    cy.contains('SEND').click()
 
     // after send we get alert, so get data from alert and show it in console
     cy.on('window:alert', msg => {

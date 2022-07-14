@@ -32,6 +32,8 @@ import {
 } from "../form-draggable-fields/draggable-fields-portal/draggable-fields-portal.component";
 import {FormAccordionPortalComponent} from "../form-accordion/form-accordion-portal/form-accordion-portal.component";
 import {PortalModule} from "@angular/cdk/portal";
+import {UpperCasePipe} from "../../../pipes/upper-case.pipe";
+import {FormAccordionComponent} from "../form-accordion/form-accordion.component";
 
 describe('FormBuilderComponent', () => {
 
@@ -54,7 +56,9 @@ describe('FormBuilderComponent', () => {
         MatLabel,
         FormCreatorPortalComponent,
         DraggableFieldsPortalComponent,
-        FormAccordionPortalComponent
+        FormAccordionPortalComponent,
+        UpperCasePipe,
+        FormAccordionComponent
       ],
       imports: [
         BrowserAnimationsModule,
@@ -108,10 +112,8 @@ describe('FormBuilderComponent', () => {
     // call ngOnInit and detectChanges
     component.ngOnInit();
     fixture.detectChanges();
-
     // find edit field form by fixture and selector
     const editFieldForm = findComponent(fixture, 'app-form-accordion')
-
     // check editField component will not to be null
     expect(editFieldForm).not.toBeNull();
   });
@@ -131,9 +133,6 @@ describe('FormBuilderComponent', () => {
 
     // check if component exists
     expect(formCreator).not.toBeNull();
-
-    // check if form passed how we want
-    expect(formCreator.componentInstance.form$).toEqual(component.form$)
   });
   it('should render draggable fields component', () => {
 
