@@ -6,6 +6,7 @@ import {AuthService} from "./service/auth.service";
 import {HttpClientTestingModule} from "@angular/common/http/testing";
 import {Location} from "@angular/common";
 import {Router} from "@angular/router";
+import {MatSnackBarModule} from "@angular/material/snack-bar";
 
 describe('AppComponent', () => {
   let component: AppComponent
@@ -16,7 +17,8 @@ describe('AppComponent', () => {
     await TestBed.configureTestingModule({
       imports: [
         RouterTestingModule,
-        HttpClientTestingModule
+        HttpClientTestingModule,
+        MatSnackBarModule
       ],
       declarations: [
         AppComponent

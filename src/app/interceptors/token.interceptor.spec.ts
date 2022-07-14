@@ -4,6 +4,7 @@ import {TokenInterceptor} from './token.interceptor';
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {AuthService} from "../service/auth.service";
 import {HttpClientTestingModule, HttpTestingController} from "@angular/common/http/testing";
+import {MatSnackBarModule} from "@angular/material/snack-bar";
 
 describe('TokenInterceptor', () => {
   let interceptor: TokenInterceptor;
@@ -17,7 +18,7 @@ describe('TokenInterceptor', () => {
       },
       TokenInterceptor, AuthService
       ],
-    imports: [HttpClientModule, HttpClientTestingModule]
+    imports: [HttpClientModule, HttpClientTestingModule, MatSnackBarModule]
     })
     service = TestBed.inject(AuthService);
     mockHttp = TestBed.inject(HttpTestingController);
@@ -32,7 +33,7 @@ describe('TokenInterceptor', () => {
     service.setToken('some_token')
 
     // create mock request for check if interceptor work properly
-    service.loginUser({email: 'testEmail', password: 'testPassword'})
+    service.loginUser({username: 'testEmail', password: 'testPassword'})
       .subscribe((access_token) => expect(access_token).toBeTruthy()) // check if we get 'some_token'
     const httpRequest = mockHttp.expectOne({});
 

@@ -52,6 +52,7 @@ import { FormAccordionPortalComponent } from './components/builder/form-accordio
 import { EffectsModule } from '@ngrx/effects';
 import {AppEffects} from "./app.effects";
 import { UpperCasePipe } from './pipes/upper-case.pipe';
+import {MatSnackBarModule} from "@angular/material/snack-bar";
 
 @NgModule({
   declarations: [
@@ -97,6 +98,7 @@ import { UpperCasePipe } from './pipes/upper-case.pipe';
     MatCheckboxModule,
     MatOptionModule,
     MatSelectModule,
+    MatSnackBarModule,
     PortalModule,
     EffectsModule.forRoot([AppEffects])
   ],
