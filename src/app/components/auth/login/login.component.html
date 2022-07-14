@@ -4,15 +4,22 @@
     <form [formGroup]="loginForm"
           (ngSubmit)="onSubmit()"
           style="border: none">
-      <mat-form-field >
-        <mat-label>Username</mat-label>
-        <input matInput formControlName="username" placeholder="Enter Username" id="username"/>
-      </mat-form-field>
+      <app-auth-input
+        formControlName="username"
+        [label]="'Username'"
+        [placeholder]="'Enter Username'"
+        [tagId]="'username'"
+        [required]="true"
+      ></app-auth-input>
       <br>
-      <mat-form-field>
-        <mat-label>Password</mat-label>
-        <input matInput formControlName="password" placeholder="Enter Password" id="password" type="password"/>
-      </mat-form-field>
+      <app-auth-input
+        formControlName="password"
+        [label]="'Password'"
+        [placeholder]="'Enter Password'"
+        [tagId]="'password'"
+        [type]="'password'"
+        [required]="true"
+      ></app-auth-input>
       <br>
       <button mat-raised-button color="primary" style="width: 100%" [disabled]="loginForm.invalid || loginForm.disabled">Submit</button>
     </form>
