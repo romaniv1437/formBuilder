@@ -1,46 +1,16 @@
-import {
-  AfterViewInit,
-  ApplicationRef,
-  Component,
-  ComponentFactoryResolver,
-  Injector, OnDestroy,
-  OnInit,
-  ViewChild
-} from '@angular/core';
-import {CdkPortal, DomPortalHost} from "@angular/cdk/portal";
+import {ApplicationRef, Component, ComponentFactoryResolver, Injector} from '@angular/core';
+import {PortalComponent, sharedTemplate} from "../../../assets/portal/portal.component";
 
 @Component({
   selector: 'app-form-accordion-portal',
-  template:
-    `
-      <ng-container *cdkPortal>
-      <ng-content></ng-content>
-    </ng-container>
-  `,
+  template: sharedTemplate,
   styleUrls: ['./form-accordion-portal.component.scss']
 })
-export class FormAccordionPortalComponent implements OnInit, AfterViewInit, OnDestroy {
-  // @ts-ignore
-  @ViewChild(CdkPortal) portal: CdkPortal;
-  // @ts-ignore
-  private host: DomPortalHost;
-  constructor( private componentFactoryResolver: ComponentFactoryResolver,
-               private applicationRef: ApplicationRef,
-               private injector: Injector) {
-  }
-  ngOnInit(): void {
-  }
-  ngAfterViewInit() {
-    const creatorDiv = document.querySelector('#form-accordion')!
-    this.host = new DomPortalHost(
-      creatorDiv,
-      this.componentFactoryResolver,
-      this.applicationRef,
-      this.injector
-    )
-    this.host.attach(this.portal)
-  }
-  ngOnDestroy() {
-    this.host.detach()
+export class FormAccordionPortalComponent extends PortalComponent {
+  constructor(componentFactoryResolver: ComponentFactoryResolver,
+              applicationRef: ApplicationRef,
+              injector: Injector) {
+    super(componentFactoryResolver, applicationRef, injector);
+    this.targetDiv = 'form-accordion'
   }
 }
