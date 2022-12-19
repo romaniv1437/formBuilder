@@ -8,7 +8,7 @@ import {HomeComponent} from "./components/home/home.component";
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'create-form', component: BuilderComponent, canActivate: [AuthGuard] },
+  { path: 'create-form', component: BuilderComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
 ];

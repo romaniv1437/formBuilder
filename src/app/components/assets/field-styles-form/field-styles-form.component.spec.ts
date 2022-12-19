@@ -54,7 +54,7 @@ describe('FieldStylesFormComponent', () => {
     const styleFormValues = {
       label: '',
       text: '',
-      color: '',
+      fontColor: '',
       placeholder: '',
       width: '',
       height: '',

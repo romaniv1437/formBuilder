@@ -54,6 +54,7 @@ import {AppEffects} from "./app.effects";
 import { UpperCasePipe } from './pipes/upper-case.pipe';
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import { AuthInputComponent } from './components/assets/auth-input/auth-input.component';
+import { OptionsComponent } from './components/builder/options/options.component';
 
 @NgModule({
   declarations: [
@@ -77,7 +78,8 @@ import { AuthInputComponent } from './components/assets/auth-input/auth-input.co
     FormAccordionComponent,
     FormAccordionPortalComponent,
     UpperCasePipe,
-    AuthInputComponent
+    AuthInputComponent,
+    OptionsComponent
   ],
   imports: [
     ReactiveComponentModule,

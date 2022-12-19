@@ -11,6 +11,7 @@ import {Observable, Subscription} from "rxjs";
 import {IActiveField} from "../../../../assets/models/IActiveField";
 import {FormGroup} from "@angular/forms";
 import {CdkDragDrop, moveItemInArray} from "@angular/cdk/drag-drop";
+import {map} from "rxjs/operators";
 
 @Component({
   selector: 'app-form-creator',
@@ -20,23 +21,20 @@ import {CdkDragDrop, moveItemInArray} from "@angular/cdk/drag-drop";
 })
 export class FormCreatorComponent implements AfterContentChecked, OnInit, OnDestroy{
 
-  @Input() form$: Observable<Array<{field?: IActiveField}>>
+  @Input() form$: Observable<{field?: IActiveField}[]> = new Observable<{field?: IActiveField}[]>();
   @Input() form_result: FormGroup = new FormGroup<any>('')
   @Input() removeField: any;
   @Input() setEditMode: any;
   @Input() updatedAt: number|undefined;
 
-  formCopy: any;
+  formCopy$: Observable<(IActiveField | undefined)[]> = new Observable<(IActiveField | undefined)[]>()
   controlSub: Subscription|undefined;
 
   constructor(private ref: ChangeDetectorRef) {
     this.controlSub = new Subscription();
-    this.form$ = new Observable<Array<{field?: IActiveField}>>()
   }
   ngOnInit() {
-    this.controlSub = this.form$?.subscribe(value => {
-      this.formCopy = value.map(field => field.field)
-    })
+    this.formCopy$ = this.form$?.pipe(map( value => value.map(field => field.field)))
   }
   ngAfterContentChecked() {
     this.ref.detectChanges();

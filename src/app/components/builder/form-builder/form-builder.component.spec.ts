@@ -111,7 +111,6 @@ describe('FormBuilderComponent', () => {
     // here we check if edit field component render properly
 
     // set isEdit of true for render edit field component
-    component.isEdit$ = of(true)
 
     // call ngOnInit and detectChanges
     component.ngOnInit();
@@ -161,15 +160,11 @@ describe('FormBuilderComponent', () => {
 
     // call editField, it will change existed field from form by id
     // edit field will dispatch to store once time, and spy now will be called 3 times
-    component.editField(<IActiveFieldOptions>{
-      label: 'test label',
-      placeholder: 'test placeholder',
-      styles: {}
-    }, 'test label')
+
 
     // remove field calls once, and it will remove field from the form array
     // now spy will be called 4 times
-    component.removeField(0, 'test label')
+    component.removeField('0', 'test label')
 
     // expected spy have been called 4 times
     expect(storeSpy).toHaveBeenCalledTimes(4);

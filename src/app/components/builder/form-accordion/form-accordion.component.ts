@@ -9,10 +9,8 @@ import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 export class FormAccordionComponent {
 
   @Input() activeField: string|undefined;
-  @Input() isEdit: boolean|undefined;
   @Input() addField: any;
-  @Input() editField: any;
-  @Input() editFieldLabel: string|undefined;
+  @Input() prevFieldLabel: string|undefined;
   @Input() form_result: any;
 
   constructor() { }

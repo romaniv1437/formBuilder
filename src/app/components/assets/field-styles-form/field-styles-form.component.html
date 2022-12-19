@@ -1,6 +1,6 @@
 <div class="form-style">
   <p>current field is => {{activeField | ngrxPush}}</p>
-  <form [formGroup]="styleForm" class="form-style-control" (ngSubmit)="onSubmit()" id="styleForm">
+  <form [formGroup]="styleForm" class="form-style-control" id="styleForm">
     <mat-form-field style="background-color: #fff; padding: 5px; color: #000;">
       <mat-label>Field label</mat-label>
       <input matInput formControlName="label" placeholder="label" id="label"/>
@@ -43,10 +43,9 @@
     </mat-form-field>
     <mat-form-field style="background-color: #fff; padding: 5px; color: #000;">
       <mat-label>Field color</mat-label>
-      <input matInput formControlName="color" id="color" placeholder="color" [(colorPicker)]="styleForm?.value.color!"/>
+      <input matInput formControlName="color" id="color" placeholder="color" [(colorPicker)]="styleForm.value['color']"/>
 <!--[style.background]="styleForm.value.color"-->
     </mat-form-field>
-    <button mat-raised-button color="primary" [disabled]="styleForm.invalid" style="cursor: pointer">{{'submit'|upperCase}}</button>
   </form>
 </div>
 

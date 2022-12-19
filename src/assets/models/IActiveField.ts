@@ -2,7 +2,7 @@ import {IStyles} from "./IStyle";
 
 export interface IActiveField {
   name: string,
-  id: number,
+  id: string,
   options: IActiveFieldOptions
 }
 export interface IActiveFieldOptions {

@@ -23,7 +23,7 @@ export class FormDraggableFieldsComponent implements OnInit, OnDestroy{
     this.showForm = new FormGroup({})
   }
   ngOnInit() {
-    this.controlSub = this.field$?.subscribe(field => this.showForm.addControl(field.options.label, this.fb.control('')))
+    this.controlSub = this.field$?.subscribe(field => this.showForm.addControl(field.id, this.fb.control('')))
   }
   ngOnDestroy() {
     this.controlSub?.unsubscribe()

@@ -4,6 +4,7 @@ import {IStyles} from "../../../../assets/models/IStyle";
 import {IActiveFieldOptions} from "../../../../assets/models/IActiveField";
 import {borderStylesData} from "../../../../assets/data/borderStylesData";
 import {Store} from "@ngrx/store";
+import {debounceTime, startWith} from "rxjs";
 
 
 @Component({
@@ -20,52 +21,56 @@ export class FieldStylesFormComponent implements OnInit {
   @Input() activeField: string | undefined
   // for editField
   @Input() onEditField: any;
-  @Input() editFieldLabel: string | null = '';
+  @Input() prevFieldLabel: string | undefined = '';
   @Input() form_result: FormGroup = new FormGroup<any>('')
   // local data
-  styleForm: FormGroup;
+  styleForm: FormGroup = new FormGroup({
+    label: new FormControl('', Validators.required),
+    placeholder: new FormControl(''),
+    text: new FormControl(''),
+    color: new FormControl(''),
+    width: new FormControl(''),
+    height: new FormControl(''),
+    fontSize: new FormControl(''),
+    borderStyle: new FormControl(''),
+    fontWeight: new FormControl(''),
+    required: new FormControl(false)
+  });
   styles: IStyles = {};
   options: IActiveFieldOptions | undefined;
   borderStyles = borderStylesData;
 
   constructor(private store: Store<Store>) {
-    this.styleForm = new FormGroup({
-      label: new FormControl('', Validators.required),
-      placeholder: new FormControl(''),
-      text: new FormControl(''),
-      color: new FormControl(''),
-      width: new FormControl(''),
-      height: new FormControl(''),
-      fontSize: new FormControl(''),
-      borderStyle: new FormControl(''),
-      fontWeight: new FormControl(''),
-      required: new FormControl(false)
-    })
   }
-  get field(){
+
+  get field() {
     return this.styleForm.controls;
   }
-  onSubmit() {
+
+  onSubmit(value: any) {
     this.styles = {
-      borderStyle: this.styleForm.value.borderStyle,
-      width: this.styleForm.value.width + 'px',
-      height: this.styleForm.value.height + 'px',
-      fontSize: this.styleForm.value.fontSize + 'px',
-      fontWeight: this.styleForm.value.fontWeight,
-      color: this.styleForm.value.color
+      borderStyle: value.borderStyle,
+      width: value.width + 'px',
+      height: value.height + 'px',
+      fontSize: value.fontSize + 'px',
+      fontWeight: value.fontWeight,
+      color: value.fontColor
     }
     this.options = {
-      placeholder: this.styleForm.value.placeholder,
-      label: this.styleForm.value.label,
-      text: this.styleForm.value.text,
+      placeholder: value.placeholder,
+      label: value.label,
+      text: value.text,
       styles: this.styles,
-      required: this.styleForm.value.required
+      required: value.required
     }
-    if (this.editFieldLabel !== this.styleForm.value.label) this.submitForm(this.options, this.editFieldLabel);
-    this.styleForm.reset()
+    console.log(this.activeField)
+    this.submitForm(this.options, value.label)
   }
 
   ngOnInit(): void {
+    this.styleForm.valueChanges
+      .pipe(debounceTime(0))
+      .subscribe(value => this.onSubmit(value))
   }
 
 }

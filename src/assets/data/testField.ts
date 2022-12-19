@@ -1,5 +1,5 @@
 export const testField = {
-  id: 1,
+  id: '1',
   name: 'input',
   options: {
     placeholder: 'placeholder',
@@ -11,7 +11,7 @@ export const testField = {
       borderStyle: 'solid',
       fontSize: '16px',
       fontWeight: '500',
-      color: 'black'
+      fontColor: 'black'
     },
     required: false
   },

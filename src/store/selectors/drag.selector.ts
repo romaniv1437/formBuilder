@@ -15,14 +15,6 @@ export const selectForm = createSelector(
   selectorDragState,
   state => state.form
 )
-export const isEdit = createSelector(
-  selectorDragState,
-  state => state.isEdit.editMode
-)
-export const editFieldLabel = createSelector(
-  selectorDragState,
-  state => state.isEdit.editFieldLabel
-)
 export const updatedAtSelector = createSelector(
   selectorDragState,
   state => state.updatedAt

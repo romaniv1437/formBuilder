@@ -1,0 +1,8 @@
+<main class="options">
+  <div class="options--container">
+    <div class="option" *ngFor="let option of options" (click)="option.func('1')">
+      <mat-icon>{{option.icon}}</mat-icon>
+      <span>{{option.title}}</span>
+    </div>
+  </div>
+</main>
